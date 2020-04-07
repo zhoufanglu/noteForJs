@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<style>
+    /*#a {color : #FFFF00;}*/
+
+    #a:hover + #c{color : #00FF00;}
+    #a:hover + #c > #b{color : #0000FF;}
+    #b:hover + #c{
+        color: red;
+    }
+</style>
+    <div id='a'>元素1
+
+    </div>
+    <div id='c'>元素3
+        <div id='b'>元素2</div>
+    </div>
+
+
+</html>
