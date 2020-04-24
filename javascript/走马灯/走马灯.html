@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        scroll-area {
+            position: relative;
+            height: 40px;
+            border: 0px solid #ccc;
+            width: 100px;
+            overflow: hidden;
+        }
+
+        .scroll {
+            position: absolute;
+            line-height: 40px;
+            left: 100%;
+            top: 0;
+            white-space: nowrap;
+            -webkit-animation: todayScroll 4s linear infinite;
+            animation: todayScroll 4s linear infinite;
+        }
+
+        .today-scroll-content {
+            margin-right: 3em;
+        }
+
+        @keyframes todayScroll {
+            0% {
+                transform: translate(-50%);
+            }
+
+            100% {
+                transform: translate(-100%);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="scroll-area">
+    <div class="scroll">
+      <span class="today-scroll-content">
+         的英文这一个跑马灯
+        </span>
+        <span class="today-scroll-content">
+          的英文这一个跑马灯
+        </span>
+    </div>
+
+
+</div>
+</body>
+</html>

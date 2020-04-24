@@ -5,11 +5,100 @@
     <title>Title</title>
 </head>
 <body>
-    1、为什么从上家公司离职？
+    <!--1、为什么从上家公司离职？
         想换个环境，想得到更好的提升，所以选择了离开。
     2、项目中遇到的难点？
         Mpvue的分包
         分享页面用户数据的获取
-        vue中父子组件的传值
+        vue中父子组件的传值-->
+
+    <script>
+        /*现有 Json 数据，格式如下：
+            json = {
+             "a": [ { "b": "c" } , ... ] , ...
+             };
+        请实现一个方法：get(json, "a[0].b")，使其返回值为 c。
+        要求：自己实现遍历逻辑，不允许使用正则表达式、不允许使用 eval()等类似
+        方法。*/
+        /*
+        json = {
+         "a": [ { "b": "c" }, "d" ], "x": 1
+         }
+        get(json, "a[0].b") == "c" //json.a[0].b
+        get(json, "a[1]") == "d"  // json.a[1]
+        get(json, "x") == 1
+        */
+        
+
+        const json = {
+            "a": [ { "b": "c" }, "d" ],
+            "x": 1,
+            "z": {person:{name:'lfz',age:{big:22, small: 11}}}
+        }
+        //console.log(35, json.a[1])
+        //key  a[0].b a[1] x z.person
+        function get (json, key){
+            console.log('key', key)
+            let val = null, firstKey = null, keyList = []
+
+            //遍历key,来进行查找值
+            //1、'单一属性' 一层 key
+            if(
+                key.indexOf('.') === -1
+                && key.indexOf('[') === -1
+            ){
+                firstKey = key
+                val = json[firstKey]
+            }
+            //2、'简单属性嵌套' z.person
+            if(
+                key.indexOf('.') !== -1
+                && key.indexOf('[') === -1
+            ){
+                keyList = key.split('.')
+                val = findValByKeyList(json, keyList)
+            }
+            //3、字符串内有数组  a[1]  a[0].b
+            if(
+                key.indexOf('.') === -1
+                && key.indexOf('[') !== -1
+            ){
+                keyList = [key.split('[')[0]]
+                console.log(67, keyList[0])
+
+            }
+
+            return val
+        }
+        //get(json, 'a[0].b')
+        get(json, 'a[2]')
+        //get(json, 'x')
+        //get(json, 'z.person.age.big')
+        //get(json, 'z.person')
+
+        /**
+         * 
+         * @param json 每次查找的json值
+         * @param keyList  查找索引数组
+         * @param key  索引值
+         * @param i  keyList的索引 key
+         * @returns {*}
+         */
+        function findValByKeyList(json, keyList, key, i){
+            //console.log(70, keyList)
+            i===undefined?i=0:i
+            if(i+1 < keyList.length){ //如果长度没有超出 继续查找
+                findValByKeyList(json[keyList[i]], keyList, keyList[i+1], i+1)
+            }else{
+                console.log(85, json[key])
+                return json[key]
+            }
+        }
+
+        function findJsonByKey(json, key) {
+            
+        }
+
+    </script>
 </body>
 </html>

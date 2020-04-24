@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />-->
+    <link rel="stylesheet" href="./util/aos.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .out{
+        height: 200vh;
+        padding-top: 900px;
+    }
+    .p-aos{
+        background-color: red;
+        height: 200px;
+        width: 200px;
+        margin-top: 20px;
+    }
+</style>
+<body>
+<div class="out">
+    <div class="p-aos" data-aos="fade-up"  data-aos-mirror="true"
+    >
+        aaa
+    </div>
+    <div class="p-aos" data-aos="fade-right">
+        bbb
+    </div>
+    <div class="p-aos" data-aos="fade-left">
+        ccc
+    </div>
+</div>
+
+<!--<script src="https://unpkg.com/aos@next/dist/aos.js"></script>-->
+<script src="util/aos.js"></script>
+<script>
+    console.log(36, AOS)
+    AOS.init();
+    /*console.log(12,AOS)
+    window.addEventListener('scroll', ()=>{
+        console.log('xx')
+        AOS.refresh
+    });*/
+
+</script>
+</body>
+</html>
