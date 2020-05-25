@@ -7,7 +7,18 @@
 <body>
 
 <script>
-    var person1 = {
+    /**********************reduce***********************/
+   /* const arr = [1,2,3,4,5]
+    /!**
+     * @param prev 第一次默认是第一项，之后都是return的值
+     * @param 是当前的项 第一次没有执行，之后都是当前
+     * 从第二项开始遍历
+     *
+     **!/
+    arr.reduce((prev,cur,index,arr)=>{
+      return prev+cur
+    })*/
+    /*var person1 = {
         toLocaleString: function () {
             return 'NikolaosLocal'
         },
@@ -26,8 +37,31 @@
     }
     var people = [person1, person2]
     console.log(people)
-    console.log(people.toString())
-
+    console.log(people.toString())*/
+    /**********************function***********************/
+    /*let fn_1 = function (num1, num2) {
+        return num1 + num2
+    }
+    const fn_2 = fn_1
+    console.log(45, fn_1(1,2)) //3
+    fn_1 = null
+    console.log(44, fn_2(1,2)) //3*/
+    /**recursion **/
+    /*function fn_jianCheng(val) {
+        if(val>1){
+          return val*fn_jianCheng(--val)
+        }
+        if(val===1){
+          return 1
+        }
+    }
+    console.log(fn_jianCheng(3))*/
+    var o = {color: 'red'}
+    function sayColor() {
+      console.log(this.color)
+    }
+    console.log(sayColor.bind(o)())
+ 
 </script>
 </body>
 </html>
