@@ -1,39 +1,187 @@
 [
-  "0.gif",
-  "Funny00002.jpg",
-  "Funny00003.jpg",
-  "Funny00004.gif",
-  "Funny00005.gif",
-  "Funny00006.gif",
-  "Funny00007.jpg",
-  "Funny00008.gif",
-  "Funny00009.gif",
-  "Funny00010.gif",
-  "Funny00011.gif",
-  "Funny00012.gif",
-  "Funny00013.gif",
-  "Funny00014.gif",
-  "Funny00015.gif",
-  "Funny00016.gif",
-  "Funny00017.gif",
-  "Funny00018.gif",
-  "Funny00019.gif",
-  "Funny00020.gif",
-  "Funny00021.gif",
-  "Funny00022.gif",
-  "Funny00023.gif",
-  "Funny00024.gif",
-  "Funny00025.gif",
-  "Funny00026.gif",
-  "Funny00027.gif",
-  "Funny00028.gif",
-  "Funny00029.gif",
-  "Funny00030.gif",
-  "Funny00031.gif",
-  "Funny00032.gif",
-  "Funny00033.gif",
-  "Funny00034.gif",
-  "Funny00035.gif",
-  "Funny00036.gif",
-  "Funny00037.gif"
+  {
+    "name": "0.gif",
+    "width": 200,
+    "height": 200
+  },
+  {
+    "name": "Funny00002.jpg",
+    "width": 118,
+    "height": 141
+  },
+  {
+    "name": "Funny00003.jpg",
+    "width": 200,
+    "height": 183
+  },
+  {
+    "name": "Funny00004.gif",
+    "width": 210,
+    "height": 100
+  },
+  {
+    "name": "Funny00005.gif",
+    "width": 75,
+    "height": 43
+  },
+  {
+    "name": "Funny00006.gif",
+    "width": 65,
+    "height": 100
+  },
+  {
+    "name": "Funny00007.jpg",
+    "width": 250,
+    "height": 229
+  },
+  {
+    "name": "Funny00008.gif",
+    "width": 200,
+    "height": 200
+  },
+  {
+    "name": "Funny00009.gif",
+    "width": 142,
+    "height": 150
+  },
+  {
+    "name": "Funny00010.gif",
+    "width": 300,
+    "height": 300
+  },
+  {
+    "name": "Funny00011.gif",
+    "width": 102,
+    "height": 126
+  },
+  {
+    "name": "Funny00012.gif",
+    "width": 200,
+    "height": 200
+  },
+  {
+    "name": "Funny00013.gif",
+    "width": 300,
+    "height": 300
+  },
+  {
+    "name": "Funny00014.gif",
+    "width": 176,
+    "height": 127
+  },
+  {
+    "name": "Funny00015.gif",
+    "width": 100,
+    "height": 100
+  },
+  {
+    "name": "Funny00016.gif",
+    "width": 218,
+    "height": 200
+  },
+  {
+    "name": "Funny00017.gif",
+    "width": 200,
+    "height": 200
+  },
+  {
+    "name": "Funny00018.gif",
+    "width": 200,
+    "height": 200
+  },
+  {
+    "name": "Funny00019.gif",
+    "width": 150,
+    "height": 131
+  },
+  {
+    "name": "Funny00020.gif",
+    "width": 234,
+    "height": 213
+  },
+  {
+    "name": "Funny00021.gif",
+    "width": 122,
+    "height": 135
+  },
+  {
+    "name": "Funny00022.gif",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "name": "Funny00023.gif",
+    "width": 46,
+    "height": 46
+  },
+  {
+    "name": "Funny00024.gif",
+    "width": 128,
+    "height": 150
+  },
+  {
+    "name": "Funny00025.gif",
+    "width": 120,
+    "height": 120
+  },
+  {
+    "name": "Funny00026.gif",
+    "width": 92,
+    "height": 63
+  },
+  {
+    "name": "Funny00027.gif",
+    "width": 53,
+    "height": 63
+  },
+  {
+    "name": "Funny00028.gif",
+    "width": 100,
+    "height": 100
+  },
+  {
+    "name": "Funny00029.gif",
+    "width": 148,
+    "height": 145
+  },
+  {
+    "name": "Funny00030.gif",
+    "width": 100,
+    "height": 100
+  },
+  {
+    "name": "Funny00031.gif",
+    "width": 200,
+    "height": 200
+  },
+  {
+    "name": "Funny00032.gif",
+    "width": 300,
+    "height": 300
+  },
+  {
+    "name": "Funny00033.gif",
+    "width": 60,
+    "height": 60
+  },
+  {
+    "name": "Funny00034.gif",
+    "width": 160,
+    "height": 180
+  },
+  {
+    "name": "Funny00035.gif",
+    "width": 246,
+    "height": 246
+  },
+  {
+    "name": "Funny00036.gif",
+    "width": 210,
+    "height": 263
+  },
+  {
+    "name": "Funny00037.gif",
+    "width": 153,
+    "height": 162
+  }
 ]

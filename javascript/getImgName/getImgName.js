@@ -1,5 +1,7 @@
 //获取项目工程里的图片
 var fs = require('fs');//引用文件系统模块
+var image = require('imageinfo')
+
 function readFileList(path, filesList) {
     var files = fs.readdirSync(path);
     files.forEach(function (itm, index) {
@@ -24,11 +26,16 @@ var getFiles = {
     },
     //获取文件夹下的所有图片
     getImageFiles: function (path) {
-        var fileList = [];
+        var imageList = [];
         this.getFileList(path).forEach((item) => {
-            fileList.push(item.filename)
+            var ms = image(fs.readFileSync(item.path + item.filename));
+            ms.mimeType && (imageList.push({
+                name: item.filename,
+                width: ms.width,
+                height: ms.height
+            }))
         });
-        return fileList;
+        return imageList;
     }
 };
 //获取文件夹下的所有图片信息
