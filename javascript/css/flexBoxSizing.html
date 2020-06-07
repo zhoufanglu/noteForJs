@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .panel >div{ /*行*/
+            display: flex;
+        }
+        span{  /*item*/
+            flex: 1;
+            overflow-wrap: break-word;
+            overflow: hidden;
+            word-wrap: break-word;
+            border: solid 1px red;
+        }
+    </style>
+</head>
+<body>
+    <div class="panel">
+        <div>
+            <span>1</span><span>1</span><span>1</span>
+        </div>
+        <div>
+            <span>
+                <h3>name</h3>
+                <p>222222222222222222222222222222222222222222222222222222222</p>
+            </span>
+            <span>1</span><span>1</span>
+        </div>
+    </div>
+</body>
+</html>
