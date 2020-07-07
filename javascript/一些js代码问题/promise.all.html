@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>promise.all</title>
+</head>
+<body>
+<script>
+  /**
+   * promise.all
+   * @type {Promise<number>}
+   */
+  const promise1 = Promise.resolve(3);
+  const promise2 = 42;
+  const promise3 = new Promise((resolve, reject) => reject('我是失败的Promise_1'))
+  const promise4 = new Promise((resolve, reject) => reject('我是失败的Promise_2'))
+  const promiseList = [promise1,promise2,promise3, promise4]
+
+  Promise.all(promiseList)
+    .then((values) => {
+      console.log(20, values)
+    })
+    .catch(err => {
+      console.log(22, err)
+    })
+
+  /**
+   * promise.allSettled
+   * @type {Promise<unknown>}
+   */
+  Promise.allSettled(promiseList).then(values=>{
+    console.log(26, values)
+  })
+</script>
+</body>
+</html>

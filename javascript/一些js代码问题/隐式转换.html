@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  function deepCopy(obj) {
+    let newObj = new obj.constructor //会根据类型来赋值一个空的对象 [], {},...
+    //对象
+    if (judgeCate(obj) === 'Object' ||
+      judgeCate(obj) === 'Array'
+    ) {
+      for (let key in obj) {
+        //如果属性下还是对象或者是数组 再次调用自己
+        newObj[key] = judgeCate(obj[key]) === 'Object'
+        || judgeCate(obj[key]) === 'Array'
+          ? deepCopy(obj[key]) : obj[key]
+      }
+    }
+    return newObj
+  }
+
+  /**
+   * @param obj
+   * @returns {string}
+   * 判断对象类型一把梭 String Number....
+   */
+  function judgeCate(obj) {
+    let typeSting = Object.prototype.toString.call(obj)
+    return typeSting.substring(8, typeSting.length - 1)
+  }
+
+  var arr_1 = [
+    1,
+    {
+      name: 'lfz',
+      parents_1:
+        [{
+            father: 'aaa', mother: 'bbb'
+        }],
+      parents_2:
+        [{
+          father: 'aaa', mother: 'bbb'
+        }],
+    }
+  ]
+  var arr_2 = deepCopy(arr_1)
+  console.log(arr_2)
+</script>
+</body>
+</html>

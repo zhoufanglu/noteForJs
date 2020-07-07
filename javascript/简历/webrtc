@@ -1,0 +1,10 @@
+webrtc 视频与音频的一个api
+getUserMedia - 采集本地音频和视频流
+RTCPeerConnection - 用来创建对端连接并传输音视频的API
+RTCDataChannel - 用于传输二进制数据。
+
+webrtc会建立一个‘通话’
+
+1、采集本地的音视频流
+2、利用Node+socket.io建立信令服务器
+3、socket.io能够创建聊天室
