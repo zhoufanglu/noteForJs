@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>proxy</title>
+</head>
+<body>
+<script>
+  /**
+   * new Proxy(target, handler)
+   * target 目标对象
+   * handler 函数属性对象
+   */
+  var proxy = new Proxy({name: 'lfz'}, {
+    get: function(obj, prop) {
+      console.log(16, obj)
+      console.log('设置 get 操作')
+      return obj[prop];
+    },
+    set: function(obj, prop, value) {
+      console.log('设置 set 操作')
+      obj[prop] = value;
+    }
+  });
+  proxy.time = 35; // 设置 set 操作
+  console.log(25, proxy)
+
+  console.log(proxy.time); // 设置 get 操作 // 35
+</script>
+</body>
+</html>

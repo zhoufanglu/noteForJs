@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //编写一个函数来查找字符串数组中的最长公共前缀。
+    /*输入: ["flower","flow","flight"]
+    输出: "fl"*/
+    let arr = ["flower","flow","333"]
+    //findSameString(arr)
+    function findSameString (arr) {
+      //思路 第一个和后面所有的单词比， 找出最短的那个就行
+      let returnString = ''
+      let comString = arr[0]
+      for(let i=1;i<arr.length;i++){
+        let arr_1 = comString.split('')
+        let arr_2 = arr[i].split('')
+        //比较这两个数组 找出公共元素
+        let sameString = find(arr_1, arr_2)
+        //找出最短的那个就行
+        if(returnString===''){
+          returnString = sameString
+        }else{
+          returnString = returnString.length>sameString.length?sameString:returnString
+        }
+        console.log(29, returnString)
+      }
+    }
+    function find(arr_1, arr_2) {
+      console.log(27, arr_1, arr_2)
+      let sameArr = []
+      let length = arr_1.length>arr_2.length?arr_2.length:arr_1.length
+      for(let i=0;i<length;i++){
+        if(arr_1[i] === arr_2[i]){
+          sameArr.push(arr_1[i])
+        }else {
+          break
+        }
+      }
+      return sameArr.join()
+    }
+
+    
+</script>
+</body>
+</html>
