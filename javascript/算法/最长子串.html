@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  /**
+   * @param {string} s
+   * @return {number}
+   * 输入: "abcabcbb"
+   输出: 3
+   解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
+   示例 2:
+
+   输入: "bbbbb"
+   输出: 1
+   解释: 因为无重复字符的最长子串是 "b"，所以其长度为 1。
+   示例 3:
+
+   输入: "pwwkew"
+   输出: 3
+   解释: 因为无重复字符的最长子串是 "wke"，所以其长度为 3。
+        请注意，你的答案必须是 子串 的长度，"pwke" 是一个子序列，不是子串。
+   */
+  var lengthOfLongestSubstring = function(s) {
+    if(s==='')
+      return 0
+    var arr = s.split('')
+    //[a,b,c,a,b,c,b,b]
+    var endArr = []
+    arr.forEach((item,index)=>{
+      var maxStr = ''
+      //1  a
+      let str = item //比较的单个字符
+      let comString = ''//比较的字符串
+      for(let i=index+1;i<arr.length;i++){
+        comString += arr[i]
+        if(!comString.includes(str)){
+          maxStr = str+comString
+          endArr.push(maxStr)
+        }
+      }
+      //console.log(42, maxStr)
+    })
+    //去除有重复的元素
+    const newArr = []
+    endArr.some((i,index)=>{
+      let arr = i.split('')
+      for(let j=0;j<arr.length-1;j++){
+        for(let k=j+1; k<arr.length; k++){
+          if(arr[j]===arr[k]){
+            newArr.push(i)
+          }else{
+
+          }
+        }
+      }
+    })
+    const filterArr = endArr.filter(i=>{
+      let flag = true
+      newArr.some(j=>{
+        if(j===i){
+          flag = false
+          return true
+        }
+      })
+      return flag
+    })
+    console.log(69, filterArr)
+    //找出最大长度的值
+    let maxLen = 1
+    filterArr.forEach(i=>{
+      if (i.length>maxLen)
+        maxLen = i.length
+    })
+    console.log(78, maxLen)
+    return maxLen
+  };
+  lengthOfLongestSubstring("xgwxbpqiwslfkfzuylpldbhschngbxbadyzepqomkatuhtrfggsjjzemgrsjovmrtlxldmzposkvldcs")
+</script>
+</body>
+</html>
