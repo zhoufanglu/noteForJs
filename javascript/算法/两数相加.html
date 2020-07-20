@@ -21,42 +21,44 @@
 
    */
 
-  var addTwoNumbers = function(l1, l2) {
+  var addTwoNumbers = function (l1, l2) {
     let returnArr = []
     //计算长度 方便计算  342  100 10 0
     let len = l1.length
     //第1位 2 3..
     let counts = 0
     let objList = []
-    while(counts!==len){
+    while (counts !== len) {
       let sum = l1[counts] + l2[counts]
       let obj = {
-        val: sum%10,
-        isBit: sum>=10//是否进位
+        val: sum % 10,
+        isBit: sum >= 10//是否进位
       }
       objList.push(obj)
       counts++
     }
     returnArr[0] = objList[0].val
-    for(let i=1;i<objList.length;i++){
-      if(objList[i-1].isBit){
-        returnArr[i] = objList[i].val+1
-      }else{
+    for (let i = 1; i < objList.length; i++) {
+      if (objList[i - 1].isBit) {
+        returnArr[i] = objList[i].val + 1
+      } else {
         returnArr[i] = objList[i].val
       }
     }
     console.log(48, returnArr)
     return returnArr
   };
-  addTwoNumbers([1,2,3,4], [5,1,8,2])
-    
-    console.log('----')
-    function remove(nums) {
-        nums = Array.from(new Set(nums))
-            return nums.length
-    }
-    new Set()
-    console.log(remove([1,1,2]))
+  addTwoNumbers([1, 2, 3, 4], [5, 1, 8, 2])
+
+  console.log('----')
+
+  function remove(nums) {
+    nums = Array.from(new Set(nums))
+    return nums.length
+  }
+
+  new Set()
+  console.log(remove([1, 1, 2]))
 </script>
 </body>
 </html>

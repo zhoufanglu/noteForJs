@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>insert</title>
+</head>
+<body>
+<script>
+  /**
+   * [1,2,3] , 传入item='x', index =2
+   * 最后值为 [1,2,'x',3]
+   * 不改变原来的值
+   */
+  /**********************方法1***********************/
+  /*function insert(arr, item, index) {
+    let shallow = [...arr]
+    deepArr.length++
+    for(let i=shallow.length-2;i>0;i--){
+      let j = i+1
+      if(index<=i){
+        shallow[j] = shallow[i]
+      }
+    }
+    shallow[index] = item
+    console.log(24, shallow)
+  }
+
+  let arr = [1, 2, 3, 4]
+  insert(arr, 'x', 0)
+  console.log(19, arr)*/
+  /**********************方法2***********************/
+  let arr = [1, 2, 3]
+  //1、删除
+  //arr.splice(1,2)//1是索引，2是删除的个数
+  //2、插入
+  arr.splice(2, 0, 'x')//2是插入的索引， 0是不删除的意思， 'x'是值
+  console.log(35, arr)
+
+
+</script>
+</body>
+</html>

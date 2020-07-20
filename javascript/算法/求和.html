@@ -16,12 +16,13 @@
    所以返回 [0, 1]
    */
   const nums = [2, 7, 11, 15], target = 9
+
   /**********************方法1***********************/
-  function twoNum(nums, target){
+  function twoNum(nums, target) {
     let index_1 = 0, index_2 = 0
-    for(let i=0;i<nums.length-1;i++){
-      for(let j=i+1;j<nums.length;j++){
-        if((nums[i]+nums[j]) === target){
+    for (let i = 0; i < nums.length - 1; i++) {
+      for (let j = i + 1; j < nums.length; j++) {
+        if ((nums[i] + nums[j]) === target) {
           index_1 = i
           index_2 = j
           break
@@ -30,14 +31,16 @@
     }
     return [index_1, index_2]
   }
+
   /**********************方法2***********************/
   //some  index
   console.log(35, twoNum2(nums, target))
+
   function twoNum2(nums, target) {
     let returnArr = []
-    nums.some((i,index)=>{
-      let findIndex = nums.indexOf(target-i)
-      if(findIndex !== index && findIndex !== -1){
+    nums.some((i, index) => {
+      let findIndex = nums.indexOf(target - i)
+      if (findIndex !== index && findIndex !== -1) {
         returnArr = [index, findIndex]
         return true
       }
