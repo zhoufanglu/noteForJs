@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+//输出以下代码运行结果，为什么？如果希望每隔 1s 输出一个结果，应该如何改造？注意不可改动 square 方法
+const list = [1, 2, 3]
+const square = num => {
+  return new Promise((resolve, reject) => {
+    //console.log(13, num)
+    setTimeout(() => {
+      resolve(num * num)
+    }, 1000)
+  })
+}
+
+async function test() {
+  for(let i=0, len=list.length; i<len; i++){
+    const res = await square(list[i])
+    console.log(res)
+  }
+  /*list.forEach(async x=> {
+    const res = await square(x)
+    console.log(res)
+  })*/
+}
+//test()
+function runPromise(i) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(i)
+    }, 2000)
+  })
+}
+const arr = [1,2,3]
+
+/*arr.forEach(i=>{
+  /!*runPromise(i).then(res=>{
+    console.log(43, res)
+  })*!/
+  setTimeout(()=>{
+    console.log(i)
+  }, 2000)
+})*/
+
+var multi = num => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (num) {
+        resolve(num * num);
+      } else {
+        reject(new Error('num not specified'));
+      }
+    }, 1000);
+  })
+}
+async function test () {
+  var nums = [1, 2, 3];
+  nums.forEach(async x => {
+    var res = await multi(x);
+    console.log(res);
+  })
+}
+test();
+
+</script>
+</body>
+</html>

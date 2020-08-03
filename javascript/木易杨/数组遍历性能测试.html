@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<a href="https://segmentfault.com/q/1010000007977209">参考</a>
+<script>
+  //速度 for>forEach>for
+  /*let arr = new Array(1000), mapArr=[],forEachArr=[], forArr=[]
+  arr = [...arr.keys()]
+  //console.log(12, arr)
+  console.time('map')
+  arr.map(i=>{
+    mapArr.push(i)
+  })
+  console.timeEnd('map')
+
+  console.time('forEach')
+  arr.forEach(i=>{
+    forEachArr.push(i)
+  })
+  console.timeEnd('forEach')
+
+  console.time('for')
+  for(let i=0;i<arr.length; i++){
+    forArr.push(i)
+  }
+  console.timeEnd('for')*/
+
+  console.log('------------------')
+  /*var arr = new Array(1000);
+
+  arr[0] = 1;
+  arr[99] = 3;
+  arr[999] = 5;
+  // for循环
+  /!*for (var i = 0, l = arr.length; i < l; i++) {
+    console.log('arr[%s]', i, arr[i]);
+  }
+  console.log('i :' , i);*!/
+  arr.map((i,index)=>{
+    console.log(i,index)
+  })*/
+  let arr = [0, 1, 2, 3];
+  const test = arr.map(i => i + 1).map(i => i + 1)
+  console.log(48, test)
+  console.log(49, arr)
+  console.log('---')
+  function foo(i, index, arr) {
+    console.log(i,index)
+  }
+  [1,2,3,,4].forEach(foo)
+</script>
+</body>
+</html>

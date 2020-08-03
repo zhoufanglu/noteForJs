@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  //实现 Promise.retry，成功后 resolve 结果，失败后重试，尝试超过一定次数才真正的 reject
+  function promiseRetry(promiseFn, num = 2) {
+    promiseFn
+      .then(res=>{
+        console.log(14, res)
+      })
+      .catch(err=>{
+        console.log(`捕获错误${num}次,错误原因为${err}`)
+        num++
+        if(num < 3){
+          promiseRetry(promiseFn, num) 
+        }else{
+          console.log('出错过多，不在请求')
+        }
+      })
+  }
+
+  const promise = new Promise((resolve, reject) => {
+    //resolve('aaa')
+    reject('xxx')
+  })
+
+  promiseRetry(promise, 1)
+
+</script>
+</body>
+</html>
