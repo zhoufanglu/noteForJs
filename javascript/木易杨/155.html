@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    .container {
+      width: 600px;
+      height: 300px;
+      display: flex;
+    }
+    .left {
+      flex: 1 2 500px;
+      background: red;
+    }
+    .right {
+      flex: 2 1 400px;
+      background: blue;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="left"></div>
+  <div class="right"></div>
+</div>
+
+<script>
+  const arr = [1,2,3,4]
+  Promise.all(arr.map(val=>createPromise(val))).then(res=>{
+    console.log(36, res)
+  })
+  function createPromise(val) {
+    return new Promise(resolve => resolve(val))
+  }
+  
+  console.log('---------')
+  const params = {
+    name:'aaa',
+    age: 12,
+    gender: 'girl'
+  }
+  foo(params)
+
+  function foo({name, age, gender= 'boy'}) {
+    console.log(46, name)
+  }
+</script>
+</body>
+</html>
