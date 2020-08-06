@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  function findIndex(key, obj) {
+    console.log(`查找的对象${obj}`, `----查找的键值${key}`)
+    let arr = []
+    let index = -1 //最后返回查找到的索引
+    /**********************如果是数组***********************/
+    if (obj instanceof Array) {
+      arr = obj
+      arr.some((i, indexA) => {
+        if (i == key) {
+          index = indexA
+          return true
+        }
+      })
+    }
+    /**********************如果是字符串***********************/
+    else if (typeof (obj) === 'string') {
+      arr = obj.split('')
+      let keyLen = key.length
+      for(let i=0;i<=arr.length-keyLen;i++){
+        if(key === obj.substring(i, i+keyLen)){
+          index = i
+        }
+      }
+    } else {
+      return '不符合数据格式'
+    }
+    return index
+  }
+  console.log(31, findIndex('g', 'abcdefg'))
+  console.log(32, findIndex(22, [22,33,444]))
+</script>
+</body>
+</html>
