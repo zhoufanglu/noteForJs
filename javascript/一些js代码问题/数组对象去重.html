@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  let objArr = [
+    {name: 'lfz', age: '1'},
+    {name: 'bbb', age: '1'},
+    {name: 'bbb', age: '1'},
+  ]
+  const test = objArr.reduce((cur,next) => {
+    objArr[next.name] ? "" : objArr[next.name] = true
+      && cur.push(next);
+    return cur
+  },[])
+  console.log(20, test)
+</script>
+</body>
+</html>

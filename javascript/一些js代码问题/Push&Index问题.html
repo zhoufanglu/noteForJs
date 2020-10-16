@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  let arr = []
+  //const template = new Array(100).fill(1)
+  const template = Array.from({ length: 100 }, (_, i) => i)
+
+  /**********************method first***********************/
+  console.time('push #1')
+  template.forEach(i=>{
+    arr.push(i)
+  })
+  console.timeEnd('push #1')
+
+  arr = []
+  /**********************method second***********************/
+  console.time('push #2')
+  template.forEach((i,index)=>{
+    arr[index] = i
+  })
+  console.timeEnd('push #2')
+
+  //console.log(arr)
+</script>
+</body>
+</html>

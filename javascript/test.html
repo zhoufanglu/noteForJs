@@ -6,18 +6,24 @@
 </head>
 <body>
 <script>
-  function a(){
-    var n = 0;
-    function add(){
-      n++;
-      console.log(n);
-    }
-    return add;
+  //请教下大佬们，有没有什么办法根据obj1和obj2获得obj3，对象1是对象2属性的子集，用对象2去更新对象1
+  let obj1 = {
+    "a":1,
+    "b":1
   }
-  var a1 = a(); //注意，函数名只是一个标识（指向函数的指针），而（）才是执行函数；
-  a1()
-  a1()
-    console.log(window.n)
+  let obj2 = {
+    "a":2,
+    "b":2,
+    "c":2
+  }
+  
+ for(let key in obj1){
+   console.log(21, key)
+   obj1[key] = obj2[key]
+ }
+ console.log(obj1)
+
+
 </script>
 </body>
 </html>

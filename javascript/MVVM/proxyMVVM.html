@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <input type="text" id="input" oninput="change(this)">
+  <br/>
+  <div id="show"></div>
+<script>
+  function proxy_bind(target){
+    return new Proxy(target, {
+      set(target, prop, value){
+        console.log('set--->', prop)
+        target[prop] = value
+        document.querySelector('#show').textContent = value
+        return value
+      },
+      get(target, prop){
+        console.log('get--->')
+        return target[prop]
+      }
+    })
+  }
+  let inputObj = {}
+  let bindObj = proxy_bind(inputObj)
+
+  function change(e) {
+    const val = e.value
+    bindObj.val = val
+  }
+  
+</script>
+</body>
+</html>
