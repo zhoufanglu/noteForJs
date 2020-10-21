@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  //用最精炼的代码实现数组非零非负最小值index
+  //[10,21,0,-7,35,7,9,23,18]
+  function findMinIndex(arr) {
+    let minObj={
+      val: arr[0],
+      index: 0
+    }
+    arr.forEach((i,index)=>{
+      if(i>0){
+        if(minObj.val>i){
+          minObj.val = i
+          minObj.index = index
+        }
+      }
+    })
+    return minObj
+  }
+  console.log(26, findMinIndex([10,21,0,-7,35,7,9,23,18]))
+</script>
+</body>
+</html>
