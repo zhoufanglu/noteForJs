@@ -24,58 +24,57 @@
  * @param {string} S
  * @return {number[]}
  */
-  var partitionLabels = function (S) {
+  const partitionLabels = function (S) {
     let str = S
-    let returnAdd = [] //返回切割的对象
-    let isBreak = false
-    let isRunWhile = true
-    console.log('-------------------ababcbacadefegdehijhklij')
-    //1、找出离第一个元素最远，且最相同的元素
-    while(isRunWhile){
-      let startIndex = 0 //切割的起始索引
-      let endIndex = 0 //切割的结束索引
+    console.log(1, str)
 
-      for(let i = 0; i<str.length; i++){
-        console.log(39, i)
-        startIndex = i
-        if(i === 3){
-          console.log('xxx')
-          isRunWhile = false
-          break
-        }
-
-        if(isBreak) break
-
-        for(let j = str.length-1; j>0; j--){
-          if(str[i] === str[j] || endIndex !==0 ){
-            endIndex = j+1
-            //定义切割的第一个string和第二个string
-            let strBefore = '', strAfter = ''
-            //进行切割
-            //因为截取的j之前的的一位，所以要j+1
-            strBefore = str.substring(startIndex, endIndex)
-            strAfter = str.slice(endIndex)
-
-            //判断两个有没有交集,如果没有 就塞入赋值
-            if(!checkTwoStringIsSame(strBefore, strAfter)){
-              //赋值
-              returnAdd.push(strBefore)
-              //去掉截取掉的部分
-              str = strAfter
-            }else{
-              //如果有交集,重新切割，往后移动一位
-              endIndex++
-            }
-            isBreak = true
-            break
-          }
-        }
-      }
-      console.log(50, returnAdd)
-      console.log(51, str)
+    const maxPos = {};
+    for (let i = 0; i < S.length; i++) { // 存放字母与它的最远位置
+      maxPos[S[i]] = i;
     }
+    console.log(35, maxPos)
+
+    let startIndex = 0 //检索开始
+    let endIndex = str.length-1 //检索最后的位置
+    //找到检索到相同的索引
+    findNoRepeatStr(str, startIndex, endIndex)
+    
   }
-  partitionLabels('ababcbacadefegdehijhklij')
+  //partitionLabels('ababcbacadefegdehijhklij')
+  partitionLabels('abaeafeg')
+
+  function findNoRepeatStr(str, startIndex, endIndex, lastTimeIndex) {
+    console.log(startIndex,'----',endIndex)
+    let returnArr = []
+
+    if(endIndex === 0){
+      return  returnArr
+    }
+
+    if(str[startIndex] === str[endIndex]){
+      let cutStr1 = str.substring(0, endIndex+1)
+      let cutStr2 = str.substring(endIndex+1, str.length)
+      console.log(46, cutStr1, cutStr2)
+      //判断有无交集
+      if(!checkTwoStringIsSame(cutStr1, cutStr2)){
+        //如果没有交集， 把str1塞入数组
+        returnArr.push(cutStr1)
+        str = cutStr2
+      }else{
+        //如果有交集，索引往后移动重新检查
+        endIndex = endIndex + 1
+        console.log('往后检索+1', endIndex)
+        //return findNoRepeatStr(str, startIndex, endIndex)
+      }
+    }
+    else{
+      return findNoRepeatStr(str, startIndex, --endIndex)
+    }
+
+    returnArr.push(str)
+    console.log('-------')
+    console.log(returnArr)
+  }
 
   function checkTwoStringIsSame(str1, str2) {
     let flag = false

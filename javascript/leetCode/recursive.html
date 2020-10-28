@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  console.log(1111, recursiveAdd(10, 0))
+  function recursiveAdd(n, s){
+    if(n===0){
+      return s
+    }
+    n--
+    s += n
+    console.log(n, s)
+    return recursiveAdd(n, s)
+  }
+</script>
+</body>
+</html>
