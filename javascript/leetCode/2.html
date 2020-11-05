@@ -26,6 +26,7 @@
  */
   const partitionLabels = function (S) {
     let str = S
+    console.log(0, '01234567')
     console.log(1, str)
 
     const maxPos = {};
@@ -34,10 +35,15 @@
     }
     console.log(35, maxPos)
 
-    let startIndex = 0 //检索开始
+    for(let i=0;i<S.length;i++) {
+      const curCharMaxPox = maxPos[S[i]] //扫描字符串最远的位置
+      console.log(curCharMaxPox)
+    }
+
+    /*let startIndex = 0 //检索开始
     let endIndex = str.length-1 //检索最后的位置
     //找到检索到相同的索引
-    findNoRepeatStr(str, startIndex, endIndex)
+    findNoRepeatStr(str, startIndex, endIndex)*/
     
   }
   //partitionLabels('ababcbacadefegdehijhklij')
