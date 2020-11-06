@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  /**
+   * promise
+   * 状态
+   * 1、pending 等待态
+   * 2、fulfilled 执行态
+   * 3、rejected 拒绝态
+   */
+/*  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve({ test: 1 })
+      resolve({ test: 2 })
+      reject({ test: 2 })
+    }, 1000)
+  }).then((data) => {
+    console.log('result1', data)
+  },(data1)=>{
+    console.log('result2',data1)
+  }).then((data) => {
+    console.log('result3', data)
+  })*/
+  //result1 { test: 1 }
+  //result3 undefined
+
+/*  console.log('---------')
+  new Promise((resolve, reject) => {
+    resolve(1)
+    resolve(2)
+  }).then(res=>{
+    console.log('then_1', res)
+  }).then(res=>{
+    console.log('then_2', res)
+  })*/
+
+/**********************多次then 1***********************/
+new Promise((resolve, reject) => {
+  console.log('p1_内部')
+  resolve(1)
+}).then(res=>{
+  console.log('p_1_then_1', res)
+  return 2
+}).then(res=>{
+  console.log('p1_then_2', res)
+})
+/**********************多次then 2***********************/
+new Promise((resolve, reject) => {
+  console.log('p2_内部')
+  resolve(1)
+}).then(res=>{
+  console.log('p_2_then_1', res)
+  return new Promise(resolve => {
+    resolve(2)
+  })
+}).then(res=>{
+  console.log('p_2_then_2', res)
+})
+
+</script>
+</body>
+</html>

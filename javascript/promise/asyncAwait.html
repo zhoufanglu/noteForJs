@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  //generator
+  //Generator 函数是一个状态机，封装了多个内部状态。
+  //一是，function关键字与函数名之间有一个星号；
+  //二是，函数体内部使用yield表达式，定义不同的内部状态（yield在英语里的意思就是“产出”）。
+/*
+  function* helloWorldGenerator(x) {
+    console.log(15, x) //1
+    yield function (nextVal){return nextVal};
+    yield 'world';
+    return 'ending';
+  }
+
+  var hw = helloWorldGenerator(1);//调用后 该函数并不执行
+  //next 方法会逐步向下执行
+  console.log(1, hw.next().value(2))//2
+  console.log(2, hw.next())//{value: "world", done: true}
+  console.log(3, hw.next())//{value: "ending", done: true}
+  console.log(4, hw.next())//{value: "undefind", done: true}
+  console.log('--------')
+
+  function* foo() {
+    let response1 = yield  (_=>{
+      return new Promise(resolve => {resolve(1)})
+    }) //返回promise对象
+    console.log('response1')
+    console.log(response1)
+    let response2 = yield (_=>{
+      return new Promise(resolve => {resolve(2)})
+    }) //返回promise对象
+    console.log('response2')
+    console.log(response2)
+  }
+  console.log(37, foo().next().value().then(res=>{console.log(res)}))
+*/
+  
+  async function async1() {
+    await async2()
+    console.log('async1 end')
+  }
+  async function async2() {
+    console.log('async2 end')
+    return console.log('return async2')
+/*    return Promise.resolve().then(()=>{
+      console.log('async2 end1')
+    })*/
+  }
+
+  async1()
+
+  setTimeout(function() {
+    console.log('setTimeout')
+  }, 0)
+
+  new Promise(resolve => {
+    console.log('Promise')
+    resolve()
+  })
+    .then(function() {
+      console.log('promise1')
+    })
+    .then(function() {
+      console.log('promise2')
+    })
+
+
+
+</script>
+</body>
+</html>
