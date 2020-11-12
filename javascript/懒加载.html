@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<style>
+  .image-item {
+    display: block;
+    margin-bottom: 50px;
+    height: 200px;
+  / / 一定记得设置图片高度
+  }
+</style>
+<div class="img-panel">
+
+</div>
+<!--<img src="" class="image-item" lazyload="true"  data-original="images/1.png"/>
+<img src="" class="image-item" lazyload="true"  data-original="images/2.png"/>
+<img src="" class="image-item" lazyload="true"  data-original="images/3.png"/>
+<img src="" class="image-item" lazyload="true"  data-original="images/4.png"/>
+<img src="" class="image-item" lazyload="true"  data-original="images/5.png"/>
+<img src="" class="image-item" lazyload="true"  data-original="images/6.png"/>
+<img src="" class="image-item" lazyload="true"  data-original="images/7.png"/>
+<img src="" class="image-item" lazyload="true"  data-original="images/8.png"/>
+<img src="" class="image-item" lazyload="true"  data-original="images/9.png"/>
+<img src="" class="image-item" lazyload="true"  data-original="images/10.png"/>
+<img src="" class="image-item" lazyload="true"  data-original="images/11.png"/>
+<img src="" class="image-item" lazyload="true"  data-original="images/12.png"/>-->
+<script>
+  /**********************获取文件路径***********************/
+  var url = "../javascript/getImgName/imgData.json"/*json文件url，本地的就写本地的位置，如果是服务器的就写服务器的路径*/
+  var request = new XMLHttpRequest();
+  request.open("get", url);/*设置请求方法与路径*/
+  request.send(null);/*不发送数据到服务器*/
+  request.onload = function () {/*XHR对象获取到返回信息后执行*/
+    if (request.status === 200) {/*返回状态为200，即为数据获取成功*/
+      var json = JSON.parse(request.responseText);
+      //渲染到页面上
+      loadImg(json)
+    }
+  }
+
+  function loadImg(imgData) {
+    console.log(41, imgData)
+    const path = '../javascript/getImgName/imgFile/'
+
+    let imgPanel = ''
+    imgData.forEach(i => {
+      const src = path + i.name
+      imgPanel += "<img src='' class='image-item' lazyload='true'  data-original=" + src + "/>"
+    })
+    document.querySelector('.img-panel').innerHTML = imgPanel
+
+    /**********************懒加载***********************/
+    lazyload()//刚开始还没滚动屏幕时，要先触发一次函数，初始化首页的页面图片
+    document.addEventListener("scroll", lazyload)
+  }
+
+
+
+  function lazyload() {
+    var viewHeight = document.documentElement.clientHeight//获取可视区高度
+    var eles = document.querySelectorAll('img[data-original][lazyload]')
+    Array.prototype.forEach.call(eles, function (item, index) {
+      var rect
+      if (item.dataset.original === "")
+        return
+      rect = item.getBoundingClientRect()// 用于获得页面中某个元素的左，上，右和下分别相对浏览器视窗的位置
+      if (rect.bottom >= 0 && rect.top < viewHeight) {
+        !function () {
+          var img = new Image()
+          img.src = item.dataset.original
+          img.onload = function () {
+            item.src = img.src
+          }
+          item.removeAttribute("data-original")//移除属性，下次不再遍历
+          item.removeAttribute("lazyload")
+        }()
+      }
+    })
+  }
+
+
+</script>
+</body>
+</html>

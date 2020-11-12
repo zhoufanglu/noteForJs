@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>数组交集</title>
+</head>
+<body>
+
+<script>
+  //计算两个数组交集
+  const arr = [1,2,3,22,33,55,2]
+  const arr2 = [2,3,3,3]
+  let lastArr = []
+  arr.forEach(i=>{
+    arr2.forEach(j=>{
+      if(i === j){
+        lastArr.push(i)
+      }
+    })
+  })
+  let arr = [... new Set(lastArr)]
+  console.log(21, arr)
+</script>
+</body>
+</html>
