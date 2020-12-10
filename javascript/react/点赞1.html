@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<body>
+  <div class='wrapper'>
+
+  </div>
+</body>
+<script>
+  // ::String => ::Document string转为dom对象
+  const createDOMFromString = (domString) => {
+    const div = document.createElement('div')
+    div.innerHTML = domString
+    return div
+  }
+
+  class LikeButton {
+    constructor() {
+      this.state = {isLiked: false}
+    }
+
+    changeLikeText() {
+      document.querySelector('.like-text').innerText = this.state.isLiked?'点赞':'取消'
+      this.state.isLiked = !this.state.isLiked
+    }
+
+    render() {
+      this.el = createDOMFromString(`
+        <button id='like-btn'>
+          <span class='like-text'>点赞</span>
+          <span>👍</span>
+        </button>
+      `)
+      console.log(42, this.el)
+      this.el.addEventListener('click', _=>{
+        this.changeLikeText()
+      })
+      return this.el
+    }
+  }
+  const wrapper = document.querySelector('.wrapper')
+  const likeButton1 = new LikeButton()
+  wrapper.appendChild(likeButton1.render())
+  
+
+</script>
+</body>
+</html>

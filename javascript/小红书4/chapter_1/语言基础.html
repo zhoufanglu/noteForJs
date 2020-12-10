@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  let a = 6, b = 9
+  function simpleTag(strings, ...val2) {
+    console.log(strings)//["","+","=",""]
+    console.log(val2)//[6915]
+    return 'foobar'
+  }
+  let taggedResult = simpleTag`${a} + ${b} = ${a+b}`
+</script>
+</body>
+</html>

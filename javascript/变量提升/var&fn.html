@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  /**********************变量提升方法的优先级比var高***********************/
+  function test(a) {
+    console.log(a)
+    var a = 1
+    console.log(a)
+    function a() {
+      console.log(a)
+      var b = function () {
+
+      }
+      console.log(b)
+      function d() {
+
+      }
+    }
+  }
+  test(2)
+</script>
+</body>
+</html>
