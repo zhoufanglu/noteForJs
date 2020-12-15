@@ -23,19 +23,30 @@
       this.state = {isLiked: false}
     }
 
+    setState(state) {
+      this.state = state
+      this.el = this.render()
+    }
+
     changeLikeText() {
+      this.setState({
+        isLiked: !this.state.isLiked
+      })
+      /*
       document.querySelector('.like-text').innerText = this.state.isLiked?'点赞':'取消'
       this.state.isLiked = !this.state.isLiked
+      console.log(29, 'xxx')*/
     }
 
     render() {
       this.el = createDOMFromString(`
+        <div>${this.state.isLiked}</div>
         <button id='like-btn'>
-          <span class='like-text'>点赞</span>
+          <span class='like-text'>${this.state.isLiked ? '取消' : '点赞'}</span>
           <span>👍</span>
         </button>
       `)
-      console.log(42, this.el)
+      console.log(49, this.state.isLiked)
       this.el.addEventListener('click', _=>{
         this.changeLikeText()
       })
