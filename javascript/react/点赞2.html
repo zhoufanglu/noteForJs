@@ -24,6 +24,9 @@
     }
 
     setState(state) {
+      /*this.state = state
+      this.el = this.render()*/
+      const oldEl = this.el
       this.state = state
       this.el = this.render()
     }

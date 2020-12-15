@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  class PersonA {
+    constructor(name, age) {
+      this.name = name
+      this.age = age
+    }
+    changeName() {
+      this.name = 'sxy'
+      this.eat()
+    }
+    eat(){
+      this.el= this.getEl()
+      console.log('改变名字后eat了some',`el为${this.el}`)
+    }
+    getEl(){
+      return 'element'
+    }
+  }
+  const personA = new PersonA('lfz', 18)
+  personA.changeName()
+  console.log(17, personA)
+</script>
+</body>
+</html>
