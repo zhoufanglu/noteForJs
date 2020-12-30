@@ -7,11 +7,21 @@
 <h1>test</h1>
 <body>
 <script>
-  const  arr = [1,2,3]
-  arr.map(i=>{
-    console.log(i)
-  })
-
+  //我需要创建person_B,属性除了name 其它都一样,还需要增加一个weight属性
+  let person_A = {
+    name: 'aaa',
+    age: 12,
+    sex: 'boy'
+  }
+  const {name, ...otherProps} = person_A
+  const person_B = {
+    ...otherProps,
+    weight: '100'
+  }
+  console.log(person_B)
+  // gender: "boy"
+  // height: "166"
+  // weight: "100"
 </script>
 </body>
 </html>
