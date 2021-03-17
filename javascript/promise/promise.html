@@ -41,7 +41,7 @@
   })*/
 
 /**********************多次then 1***********************/
-new Promise((resolve, reject) => {
+/*new Promise((resolve, reject) => {
   console.log('p1_内部')
   resolve(1)
 }).then(res=>{
@@ -50,7 +50,7 @@ new Promise((resolve, reject) => {
 }).then(res=>{
   console.log('p1_then_2', res)
 })
-/**********************多次then 2***********************/
+/!**********************多次then 2***********************!/
 new Promise((resolve, reject) => {
   console.log('p2_内部')
   resolve(1)
@@ -61,7 +61,18 @@ new Promise((resolve, reject) => {
   })
 }).then(res=>{
   console.log('p_2_then_2', res)
-})
+})*/
+  console.log('foo', foo())
+  function bar(res) {
+    console.log('bar', res)
+  }
+  function foo(){
+    const P = new Promise((resolve, reject) => {
+      resolve(1)
+    }).then(res=>{
+      bar(res)
+    })
+  }
 
 </script>
 </body>

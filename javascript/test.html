@@ -8,7 +8,7 @@
 <body>
 <script>
   //我需要创建person_B,属性除了name 其它都一样,还需要增加一个weight属性
-  let person_A = {
+  /*let person_A = {
     name: 'aaa',
     age: 12,
     sex: 'boy'
@@ -18,10 +18,20 @@
     ...otherProps,
     weight: '100'
   }
-  console.log(person_B)
+  console.log(person_B)*/
   // gender: "boy"
   // height: "166"
   // weight: "100"
+
+  const million = 1000000;
+  const arr = Array(million);
+  console.time('⏳');
+  for (let i = arr.length; i > 0; i--) {} // for(倒序) 	:- 1.5ms
+  for (let i = 0; i < arr.length; i++) {} // for          :- 1.6ms
+  arr.forEach(v => v)                     // foreach      :- 2.1ms
+  for (const v of arr) {}                 // for...of     :- 11.7ms
+  console.timeEnd('⏳');
+
 </script>
 </body>
 </html>

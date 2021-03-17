@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  /**
+   * 定时器嵌套
+   * 输出 1 00 1 00 1 00 1这样的数据
+   *//*
+  let firstCount = 0, secondCount = 0
+  let interval_1 = null, interval_2 = null
+
+  interval_1 = setInterval(_ => {
+    clearInterval(interval_2)
+    firstCount++
+    console.log(`第一层定时器---------------执行次数${firstCount}-----`)
+    secondInterval()
+  }, 3000)
+
+  function secondInterval() {
+    interval_2 = setInterval(_=>{
+      secondCount++
+      console.log(`第二层定时器-执行次数${secondCount}-`)
+      if(secondCount === 10){
+        clearInterval(interval_1)
+        clearInterval(interval_2)
+      }
+
+    }, 1000)
+  }*/
+  
+  /*let val = 0
+  setInterval(_=>{
+    val++
+    console.log('1')
+  }, 3000)
+
+  setInterval(_=>{
+    console.log('0')
+    console.log(43, val)
+  }, 1000)*/
+
+</script>
+</body>
+</html>
