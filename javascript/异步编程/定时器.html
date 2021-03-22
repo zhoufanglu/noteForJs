@@ -9,39 +9,108 @@
   /**
    * 定时器嵌套
    * 输出 1 00 1 00 1 00 1这样的数据
-   *//*
-  let firstCount = 0, secondCount = 0
+   */
+  /*setTimeout(() => { fn() })
+  function fn(){
+    console.log('aaa')
+  }*/
+  /*let firstCount = 0, secondCount = 0
   let interval_1 = null, interval_2 = null
 
   interval_1 = setInterval(_ => {
     clearInterval(interval_2)
     firstCount++
-    console.log(`第一层定时器---------------执行次数${firstCount}-----`)
+    console.log(`第一层定时器---------------执行次数${firstCount}`)
     secondInterval()
   }, 3000)
 
   function secondInterval() {
     interval_2 = setInterval(_=>{
       secondCount++
-      console.log(`第二层定时器-执行次数${secondCount}-`)
+      console.log(`第二层定时器-执行次数${secondCount}`)
       if(secondCount === 10){
         clearInterval(interval_1)
         clearInterval(interval_2)
       }
-
     }, 1000)
   }*/
   
-  /*let val = 0
-  setInterval(_=>{
-    val++
+  /*setInterval(_=>{
+    //val++
     console.log('1')
-  }, 3000)
+  }, 2000)
 
   setInterval(_=>{
-    console.log('0')
-    console.log(43, val)
+      console.log('0')
+    //console.log(43, val)
   }, 1000)*/
+
+  /*let count = 0
+  setInterval(_=>{
+    count++
+    if((count-1) % 3 === 0){
+      console.log(1)
+    }else{
+      console.log(0)
+    }
+  }, 1000)*/
+
+  /**********************动态实现间隔***********************/
+  /*const time = 2
+
+  const fn = _=>{
+    console.log('aa')
+  }
+
+  const interval = setInterval(fn,time)*/
+
+
+  /**********************方法1***********************/
+  let count = 0, timeList = [2000, 2000, 5000]
+
+  let interval = setInterval(fn, timeList[0])
+
+  function fn() {
+    count++
+    let index = count%3
+
+    console.log('次数:'+count,'时间:'+getTime())
+    if(index===0){
+      console.log('--------------')
+    }
+
+    clearInterval(interval)
+    interval = setInterval(fn, timeList[index])
+  }
+
+  function getTime() {
+    let myDate = new Date();
+    return myDate.getSeconds();// 获取当前秒数(0-59)
+  }
+  
+  /**********************方法2***********************/
+  /*let count = 0, timeList = [2000, 2000, 5000]
+
+  loopTime()
+
+  function loopTime() {
+    count++
+    let index = count % 3
+
+    console.log('次数:'+count,'时间:'+getTime())
+    if(index===0){
+      console.log('--------------')
+    }
+
+    setTimeout(_ => {
+      loopTime()
+    }, timeList[index])
+  }
+
+  function getTime() {
+    let myDate = new Date();
+    return myDate.getSeconds();// 获取当前秒数(0-59)
+  }*/
 
 </script>
 </body>
