@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h2>{{person.name}} -- {{person.age}}</h2>
+    <ul>
+        <li>{{person.fav}}</li>
+    </ul>
+</div>
+<!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+<script src="mvue.js"></script>
+<script>
+  //mvvm-mvvm就是视图模型模型视图，只要数据改变视图也会同时更新
+  //数据劫持 Object.defineProperty() 劫持数据的getter与setter,在数据变动时，发布消息给订阅者，触发相应的监听回调
+  //数据=>视图， 视图=>数据， 类似intput绑定的值的双向变化。
+  /**
+   * 执行
+   * 1、实现一个指令解析器Compile
+   * 2、 数据监听器Observer
+   * 3、 watcher更新视图
+   * 4、 proxy代理
+   */
+  /**********************1、实现指令解析器***********************/
+
+  const vm = new MVvue({
+    el: '#app',
+    data: {
+      person: {
+        name: 'lfz',
+        age: 12
+      }
+    }
+  })
+  console.log(35, vm)
+</script>
+</body>
+</html>
