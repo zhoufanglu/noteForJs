@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<div style="border: solid 1px red;min-height: 300px; display: flex;">
+    <div style="border: solid 1px green;align-items: stretch"></div>
+</div>
+<div class="vue" id="vuePanel">
+<!--v-for优先于v-if, 写一起会造成性能浪费-->
+</div>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>
+  var data = { a: 1 }
+
+  var vm = new Vue({
+    el: '#vuePanel',
+    data() {
+      return {
+
+      }
+    },
+    created() {
+      console.log('aaa')
+    }
+  })
+</script>
+</body>
+</html>

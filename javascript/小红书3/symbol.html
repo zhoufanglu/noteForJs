@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  /*let sym1 = Symbol('foo')
+  let sym2 = Symbol('foo')
+  console.log(sym1 === sym2)
+  console.log(sym1 == sym2)*/
+
+  function primitiveMutator(val) {
+    val = val + 1;
+  }
+  let x = 1;
+  primitiveMutator(x);
+  console.log(x); // 1
+  function objectMutator(val) {
+    val.prop = val.prop + 1;
+  }
+  let obj = { prop: 1 };
+  objectMutator(obj);
+  console.log(obj.prop); // 2
+
+
+</script>
+</body>
+</html>

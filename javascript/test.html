@@ -13,22 +13,46 @@
     </ul>
     <div>div</div>
     <div>div2</div>
+    <a href="./prototype.html?name=123">go test</a>
 </div>
 <body>
 <script>
-  let f = document.createDocumentFragment()
-  let firstChild
+  let arr = [
+    {
+      name: '1',
+      children: [
+        {
+          name: '1-1',
+          children: [
+            {name: '1-1-1'},
+            {name: '1-1-2'},
+          ]
+        },
+        {
+          name: '1-2',
+          children: [
+            {name: '1-2-1'},
+            {name: '1-2-2'},
+          ]
+        },
+      ]
+    }
+  ]
+  console.log(40, arr)
+  let changedArr = addProps(arr)
+  console.log(42, changedArr)
 
-  const el = document.querySelector('#el')
-
-
-
-  while(firstChild = el.firstChild){
-    f.appendChild(firstChild)
+  function addProps(arr) {
+    arr.forEach(i=>{
+      i.newProp = 'xxx'
+      if(i.children){
+        addProps(i.children)
+      }else{
+        //不做操作
+      }
+    })
+    return arr
   }
-
-  console.log(22, f)
-
 </script>
 </body>
 </html>
