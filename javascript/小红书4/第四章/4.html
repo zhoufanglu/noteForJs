@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  function setName(obj) {
+    obj.name = 'aaa'
+    obj = {}
+    obj.name = 'bbb'
+  }
+  let person = {}
+  setName(person)
+  console.log(14, person)
+  /*function setList(list) {
+    list[0] = 2
+  }
+  let outList = [1]
+  setList(outList)
+  console.log(outList)*/
+</script>
+</body>
+</html>
