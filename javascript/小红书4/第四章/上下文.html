@@ -6,14 +6,14 @@
 </head>
 <body>
 <script>
-  function outFn() {
-    let name = 'jack'
-    return function (){
-      return name
-    }
-  }
-  console.log(15, outFn()())
-  console.log(16, name)
+ let arr1 = [1,2,3]
+ let arr2 = []
+ function fn(arr1) {
+   arr2 = arr1
+   arr2 = [3,3,3]
+ }
+ fn(arr1)
+ console.log(16, arr1, arr2)
 </script>
 </body>
 </html>
