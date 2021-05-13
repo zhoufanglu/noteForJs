@@ -6,87 +6,27 @@
 </head>
 <body>
 <script>
-/*  let a = {
-    name: 'lfz'
-  }
-  let fn = function () {
-    console.log(this.name)
-  }.bind(a)
+  /**
+   *  apply, call bind无法对箭头函数有效
+   *  fn.apply(指向对象, [参数1，参数2])
+   *  fn.call(指向对象, 参数1，参数2)
+   *  fn.bind(指向对象, 参数1,参数2),返回的是一个方法， 需要这么使用fn.bind(指向对象, 参数1,参数2)()
+   * /
     //apply 和 call 的区别是 call 方法接受的是若干个参数列表，而 apply 接收的是一个包含多个参数的数组。
   //fn.bind(a)() //bind返回的是一个方法
-  fn()*/
-
-  console.log('--------')
-
-
-
-  /*let val = 1
-
-  function winFn(val) {
-    console.log(24, val)
-    return function(){
-      console.log(26, val)
+  //fn()
+    /**********************apply***********************/
+    let obj = {
+      name: 'a'
     }
-  }
 
-  const fn = winFn()
+    let fn_1 = function (val1,val2){
+      console.log(this)
+      console.log(19, val1,val2)//1,2
+    }
 
-  window.addEventListener('resize', fn)
+    fn_1.bind(obj, 1,2)()
 
-
-
-
-  setTimeout(_=> {
-    console.log('销毁')
-    window.removeEventListener("resize", fn)
-  }, 2000)*/
-
-  /*function winFn(val) {
-    console.log(val)
-  }
-  let fn = winFn.bind(this, '111')
-  window.addEventListener('resize', fn)
-
-  setTimeout(_=>{
-    console.log('销毁')
-    window.removeEventListener('resize', fn)
-  }, 2000)*/
-
-/**********************bind***********************/
-//function.bind(thisArg[, arg1[, arg2[, ...]]])
-let fn_1 = function (res){
-  console.log(58, this.name)
-    console.log(res)
-}
-
-let fn_2 = function (){
-
-}
-
-let obj = {
-  name: 'objName'
-}
-
-const bindFn = fn_1.bind(obj, 'xxx')
-
-bindFn()
-
-//target.removeEventListener(type, listener[, options]);
-
-function windowFn(val) {
-  console.log(val)
-}
-
-let fn = null
-
-fn = windowFn.bind(this, 'xxx')
-
-window.addEventListener('resize', fn)
-
-setTimeout(_=>{
-  console.log('销毁了')
-  window.removeEventListener('resize', fn)
-}, 3000)
 
 </script>
 </body>

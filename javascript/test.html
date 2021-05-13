@@ -17,42 +17,30 @@
 </div>
 <body>
 <script>
-  let arr = [
-    {
-      name: '1',
-      children: [
-        {
-          name: '1-1',
-          children: [
-            {name: '1-1-1'},
-            {name: '1-1-2'},
-          ]
-        },
-        {
-          name: '1-2',
-          children: [
-            {name: '1-2-1'},
-            {name: '1-2-2'},
-          ]
-        },
-      ]
-    }
-  ]
-  console.log(40, arr)
-  let changedArr = addProps(arr)
-  console.log(42, changedArr)
-
-  function addProps(arr) {
-    arr.forEach(i=>{
-      i.newProp = 'xxx'
-      if(i.children){
-        addProps(i.children)
-      }else{
-        //不做操作
-      }
-    })
-    return arr
+  let obj = {
+    name: 'aaa',
+    age: '14',
+    all: (function (){
+      console.log(24, obj)
+      //return obj
+    })()
   }
+
+
+
+
+  console.log(28, obj)
+  //obj.all()
+
+  console.log('----')
+
+  function showColor() {
+    console.log("my color is:" + this.color);
+  }
+
+  window.color = "red";
+
+  showColor.bind(window)();    //my color is:red
 </script>
 </body>
 </html>

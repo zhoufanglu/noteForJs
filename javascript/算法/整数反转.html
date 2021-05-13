@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  /*给你一个 32 位的有符号整数 x ，返回将 x 中的数字部分反转后的结果。
+
+如果反转后整数超过 32 位的有符号整数的范围 [−231,  231 − 1] ，就返回 0。
+
+假设环境不允许存储 64 位整数（有符号或无符号）。
+*/
+  /**
+   * @param {number} x
+   * @return {number}
+   */
+  var reverse = function(x) {
+    let isMinus = x<0
+    let tempX = 0 //整数
+    let returnRes = 0
+    if(isMinus){
+      tempX = x * -1
+    }else{
+      tempX = x
+    }
+
+    let stringX = JSON.stringify(tempX)
+    returnRes = stringX.split('').reverse().join('')
+
+    if(isMinus){
+      returnRes = returnRes*-1
+    }
+
+    if(returnRes > 2**31-1 || returnRes < 2**31*-1){
+      return 0
+    }
+
+    return returnRes
+
+  }
+  console.log(reverse(12345678))
+
+</script>
+</body>
+</html>
