@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  /**
+   * 输入：x = 121
+     输出：true
+
+   输入：x = -121
+   输出：false
+   解释：从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数。
+
+   输入：x = 10
+   输出：false
+   解释：从右向左读, 为 01 。因此它不是一个回文数。
+  /**
+   * @param {number} x
+   * @return {boolean}
+   */
+  /**********************方法1***********************/
+  /*var isPalindrome = function(x) {
+    let str = JSON.stringify(x)
+    if(x<0){
+      return false
+    }else{
+      const len = str.length
+      //判断是基数 还是偶数， 把基数转换为偶数进行比较
+      let breakIndex = 0
+      breakIndex = parseInt(len/2)
+      //console.log(34, breakIndex)
+      if(len % 2){ //基数 删除中间位置，用偶数方法比较
+        str = str.split('')
+        str.splice(breakIndex,1)
+        str = str.join('')
+      }else { //偶数
+        breakIndex = len/2
+      }
+      let count = 0, flag = true //是否为回文
+      for (let i = 0; i < str.length; i++) {
+        let start = i
+        let end = str.length-1 - count
+        count++
+        if(breakIndex === i)
+          break
+        //console.log('比较Index', start, end)
+        if(str[start] !== str[end]){
+          flag = false
+          break
+        }
+      }
+      console.log('是否回文', flag)
+      return  flag
+    }
+  }*/
+  /**********************方法2***********************/
+  var isPalindrome = function (x) {
+    let str = JSON.stringify(x)
+    if(x<0){
+      return false
+    }
+    let len = str.length, val = ''
+    while (len){
+      console.log('---', str.substring(0, len))
+      val += str.substring(0, len)%10
+      len--
+      console.log(len)
+    }
+    console.log(72, val, str)
+    if(val === str){
+        return true
+    }else{
+      return false
+    }
+
+  }
+  console.log(59, isPalindrome(123456))
+</script>
+</body>
+</html>
