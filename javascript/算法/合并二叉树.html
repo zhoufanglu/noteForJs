@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  /**
+   *
+   * 输入:
+   Tree 1                     Tree 2
+    1                         2
+   / \                       / \
+  3   2                     1   3
+ /                           \   \
+5                             4   7
+   输出:
+   合并后的树:
+    3
+   / \
+  4   5
+ / \   \
+5   4   7
+   输入
+   [1,3,2,5]
+   [2,1,3,null,4,null,7]
+   预期结果
+   [3,4,5,5,4,null,7]
+   */
+  /**
+   * @param {number[]} root1
+   * @param {number[]} root2
+   * @return {TreeNode}
+   */
+  var mergeTrees = function(root1, root2) {
+    console.log(root1)
+    console.log(root2)
+    let longArr = [], shortArr = []
+    if (root1.length > root2.length) {
+      longArr = JSON.parse(JSON.stringify(root1))
+      shortArr = JSON.parse(JSON.stringify(root2))
+    } else {
+      longArr = JSON.parse(JSON.stringify(root2))
+      shortArr = JSON.parse(JSON.stringify(root1))
+    }
+    let returnArr =[]
+    longArr.forEach((i,index)=>{
+      //i = i + shortArr[index]?shortArr[index]:0
+      console.log(i, '---', (shortArr[index]?shortArr[index]:null), '=', i+(shortArr[index]?shortArr[index]:null))
+      //计算item
+      let item = null, shortVal = (shortArr[index]?shortArr[index]:null)
+      if(i === null && shortVal === null){
+        item = null
+      }else if(i !== null && shortVal === null) {
+        item = i
+      }else if(i === null && shortVal !== null) {
+        item = shortArr[index]
+      }else if(i !== null && shortVal !== null) {
+        item = shortVal + i
+      }
+      returnArr.push(item)
+    })
+    console.log(49, returnArr)
+    return returnArr
+  }
+  mergeTrees(
+    [1,3,2,5],
+    [2,1,3,null,4,null,7]
+  )
+</script>
+</body>
+</html>
