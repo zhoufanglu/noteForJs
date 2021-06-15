@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  //地址 https://www.bilibili.com/video/BV17J411y7XZ?p=6
+  /*let arr = ['a']
+  console.log(arr.concat('b'))*/
+  /**********************第一课***********************/
+  //数组 有三代
+  //对象 有两代
+  /* let a = {}
+   let b = {}
+   console.log(a.__proto__) // Object.getPrototypeOf( a ) 也一样
+   console.log(b)
+   //父亲都一样
+   console.log(a.__proto__ === b.__proto__) //true*/
+  /**********************第5课 函数***********************/
+  /* function Person(){
+   }
+   Person.prototype.show = function (){
+     console.log('show fn')
+   }
+   let P = new Person()
+   console.log(27, P)
+   console.dir(30, Person)
+   P.show()
+
+   let flag = Person.prototype === P.__proto__
+   console.log(34, flag)*/
+  /**********************第6课***********************/
+  /*let hd = new Object()
+  hd.name = '后盾人'
+  Object.prototype.show = function (){
+    console.log('show fn')
+  }
+  console.dir(hd)
+  console.dir(Object)
+  function User() {}
+  console.dir(User)
+  let flag = User.prototype.__proto__ == Object.prototype
+
+  console.log(47, flag)
+  console.log(49, User.prototype.__proto__ == User.__proto__.__proto__)
+  console.dir(User)
+  console.log(User.__proto__.__proto__ == Object.prototype)
+  console.dir(Object.prototype)*/
+  /**********************第七课***********************/
+  /*function User() {
+
+  }
+  let hd = new User()
+  console.dir(hd)
+  console.dir(Object)
+  console.log(User.prototype == hd.__proto__)*/
+  /**********************第八课***********************/
+    //设置原型，获取原型
+ /* let child = {
+      name: 'child'
+    }
+  let father = {
+    name: 'father',
+    show() {
+      console.log('father:' + this.name)
+    }
+  }
+  //简单实现继承
+  Object.setPrototypeOf(child, father)
+  console.dir(child)
+  child.show()
+  father.show()*/
+  /**********************第九课***********************/
+  function User() {
+
+  }
+  let lfz = new User()
+  console.dir(User)
+  console.dir(lfz)
+  console.log('aaa22')
+</script>
+</html>

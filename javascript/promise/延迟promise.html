@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const P = new Promise(resolve => {
+      setTimeout(()=>{
+        return resolve('p test')
+      }, 2000)
+    })
+    P.then(res=>{
+      console.log(14, res)
+    })
+</script>
+</body>
+</html>

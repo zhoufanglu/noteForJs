@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let p = new Promise(resolve => {
+    resolve({name: undefined})
+  })
+  p.then(({name: otherName = '默认值'}) => {
+    console.log(13, otherName)
+  })
+  //别名
+  var {f: foo} = {f: 5}
+  //foo == 5 // true
+</script>
+</body>
+</html>
