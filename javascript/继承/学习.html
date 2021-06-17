@@ -75,12 +75,26 @@
   child.show()
   father.show()*/
   /**********************第九课***********************/
-  function User() {
+  /*function User() {
 
   }
   let lfz = new User()
   console.dir(User)
   console.dir(lfz)
-  console.log('aaa22')
+  console.log(  User.prototype.__proto__ === Object.prototype)*/
+  /**********************第11章***********************/
+  //原型继承
+  let a = {
+      show: function (){
+        console.log('我是a的show')
+      }
+    }
+  console.log(a.__proto__  == Object.prototype)
+  let b = {}
+  Object.setPrototypeOf(b, a)
+  b.show()
+  console.log(a == b.__proto__)
+  console.dir(a)
+  console.dir(b)
 </script>
 </html>
