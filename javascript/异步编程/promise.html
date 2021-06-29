@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  // pending 准备阶段
+  // fulfilled 成功状态
+  // rejected 拒绝状态
+  let p = new Promise((resolve, reject) => {
+    resolve(1)
+  })
+  //pThen实际上也是个Promise
+  const pThen = p.then(res => {
+    return res//1
+  })
+    .then((pThenRes) => {
+      return {
+        then(resolve, reject) {
+          resolve('嵌套值')
+        }
+      }
+    })
+    .then((res)=>{
+        console.log(res)
+    })
+
+
+  setTimeout(() => {
+    console.log(pThen)
+  })
+
+
+</script>
+</body>
+</html>

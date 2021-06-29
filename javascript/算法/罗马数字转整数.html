@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  /**
+   * @param {string} s
+   * @return {number}
+   */
+  var romanToInt = function(s) {
+    let template = {
+      I: 1,
+      V: 5,
+      X: 10,
+      L: 50,
+      C: 100,
+      D: 500,
+      M: 1000
+    }
+    const romanList = s.split('')
+    console.log(24, romanList)
+    //特殊情况
+    //--IXC右侧出现，用减法处理
+    /*const specialTemp = {
+      I: ['V', 'X'],
+      X: ['L','C'],
+      C: ['D', 'M']
+    }*/
+    const specialTempList = [
+      {romaVal: 'IV', val: 4},
+      {romaVal: 'IX', val: 9},
+      {romaVal: 'XL', val: 40},
+      {romaVal: 'XC', val: 90},
+      {romaVal: 'CD', val: 400},
+      {romaVal: 'CM', val: 900},
+    ]
+    let endArr = []
+    for (let i = 0; i < romanList.length; i++) {
+      console.log(33, romanList[i])
+      //第一个和后面一个比， 如果符合条件的数组，进行计算, 需要i不是最后一个位置判断
+      let findIndex = -1, concatItem
+      if(i !== romanList.length-1){
+        let j = i+1
+        //判断是否有特殊两个字符，如果特殊，绑定传入endArr
+        concatItem = romanList[i] + romanList[j]
+        findIndex = specialTempList.findIndex(i=>i.romaVal === concatItem)
+      }else {
+        findIndex = -1
+      }
+      //说明有特殊的两个字符，放入endArr
+      if(findIndex !== -1){
+        endArr.push(concatItem)
+        i++
+      }else{
+        endArr.push(romanList[i])
+      }
+    }
+    console.log(56, endArr)
+    //计算最后的分数
+    let sum = 0
+    endArr.forEach(i=>{
+      if(i.length===1){
+        sum += template[i]
+      }else{
+        const findItem = specialTempList.find(j=>j.romaVal === i)
+        sum += findItem.val
+      }
+    })
+    console.log(67, sum)
+    return sum
+  }
+  romanToInt('IV')
+</script>
+</body>
+</html>

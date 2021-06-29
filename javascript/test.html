@@ -17,30 +17,22 @@
 </div>
 <body>
 <script>
-  let obj = {
-    name: 'aaa',
-    age: '14',
-    all: (function (){
-      console.log(24, obj)
-      //return obj
-    })()
-  }
+  //原数组
+  let arr = [
+    {name: 1, prop: {child: 'a'}},
+    {name: 2, prop: {child: 'b'}},
+  ]
+  //塞入的项
+  const pushObj = {name: 2, prop: {child: 'b'}}
 
+  arr.push(pushObj)
+  //项转为字符串，利用set去重
+  const tempArr = arr.map(i=>JSON.stringify(i))
 
-
-
-  console.log(28, obj)
-  //obj.all()
-
-  console.log('----')
-
-  function showColor() {
-    console.log("my color is:" + this.color);
-  }
-
-  window.color = "red";
-
-  showColor.bind(window)();    //my color is:red
+  let set = new Set(tempArr)
+  //字符再次转为对象
+  const result = [...set].map(i=>JSON.parse(i))
+  console.log(result)
 </script>
 </body>
 </html>
