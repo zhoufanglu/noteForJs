@@ -3,6 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            border: solid 1px red;
+            outline: 1px dashed yellow;
+            padding: 5px 3px 4px;
+            margin: 1px 5px;
+        }
+    </style>
 </head>
 <h1>test</h1>
 <div id="el">
@@ -14,25 +24,24 @@
     <div>div</div>
     <div>div2</div>
     <a href="./prototype.html?name=123">go test</a>
+    <div class="box">
+
+    </div>
 </div>
 <body>
 <script>
-  //原数组
-  let arr = [
-    {name: 1, prop: {child: 'a'}},
-    {name: 2, prop: {child: 'b'}},
-  ]
-  //塞入的项
-  const pushObj = {name: 2, prop: {child: 'b'}}
+  let arr = [{name:'a', age: 1},{name:'b', age: 2}, {name:'c', age: 3}]
 
-  arr.push(pushObj)
-  //项转为字符串，利用set去重
-  const tempArr = arr.map(i=>JSON.stringify(i))
+  let brr = new Array(3).fill({name:'未定义', age: 0})
 
-  let set = new Set(tempArr)
-  //字符再次转为对象
-  const result = [...set].map(i=>JSON.parse(i))
-  console.log(result)
+  arr.forEach((i, index)=>{
+    brr[index].name = i.name
+    brr[index].age = i.age
+  })
+  console.log(39, brr)
+
+  /*console.log(35, brr)
+  brr[0] = {name:'已定义', age: -1}*/
 </script>
 </body>
 </html>
