@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//其实是实现indexOf功能
+/*
+示例 1：
+
+输入：haystack = "hello", needle = "ll"
+输出：2
+示例 2：
+
+输入：haystack = "aaaaa", needle = "bba"
+输出：-1
+示例 3：
+
+输入：haystack = "", needle = ""
+输出：0
+*/
+
+/**
+ * @param {string} haystack
+ * @param {string} needle
+ * @return {number}
+ */
+/*var strStr = function(haystack, needle) {
+  if(needle === ''){
+    return 0
+  }
+  for(let i=0;i<haystack.length;i++){
+    //判断
+    if(haystack[i] === needle[0]){
+      console.log(haystack.substring(i, i+needle.length),'-----',needle)
+      if(haystack.substring(i, i+needle.length) === needle){
+        return i
+      }
+    }
+  }
+  return -1
+};
+console.log(45, strStr(haystack = "hello", needle = "ll"))*/
+/*
+ 尊敬的领导们:
+    首先，感谢领导的肯定，本人在衍腾这个大家庭已工作满一年，经过一年工作的努力，谢谢领导的认可，由原先前端开发工程师，升级为了张江这边的项目经理。
+    在亿通这里，由于任职风控项目前端发挥优异，也由大数据领导(晓丽姐)看重能力，转为大数据部门外聘人员。
+    望涨薪xxx。
+    工作述职-风控项目系统
+    风控第一版
+        当我参与风控第一版的时候，对项目前端架构的主要配置与重构，对前端人员工作任务的分配。我对
+这个项目进行评估后，可以很熟练的使用我所学的新技术，进行重新架构，搭建新的开发环境，封装常用的组件和方法。我可以带着
+组内成员一起学习与交流。可以解决其他组员遇到的困难以及问题。在此工作期间，有幸参与了
+多次技术分享会，并且分享了《聊一聊-vue3》为课题的一次分享会。并得到了领导的认可赞扬与同事的学习。
+   风控第二版
+   这次项目是对第一版的重构升级，组内人员也重新配置了，从原来的临港组员，被分配到了张江这里的大数据部门组，这次，
+   我单独负责了这个项目的前端，从项目的创建，代码迭代、开发，都按时的完成。 在此期间，我推荐了组员使用了<trello>这个
+   项目平台，提高了项目迭代的效率。
+ */
+
+async function fn() {
+  if (1) {
+    const res = await P
+    console.log('a')
+  } else {
+    await P
+  }
+  console.log('b')
+}
+
+const P = new Promise(resolve => {
+  resolve('test')
+})
+
+fn()
+
+</script>
+</body>
+</html>

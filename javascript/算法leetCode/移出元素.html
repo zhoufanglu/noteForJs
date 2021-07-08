@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+/*  给你一个数组 nums和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。
+
+不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并 原地 修改输入数组。
+
+元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。*/
+/**
+ * @param {number[]} nums
+ * @param {number} val
+ * @return {number}
+ */
+var removeElement = function (nums, val) {
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] === val) {
+      //往前移动一位，长度减一
+      for (let j = i; j < nums.length - 1; j++) {
+        nums[j] = nums[j + 1]
+      }
+      i--
+      nums.length--
+    }
+  }
+  console.log(nums)
+  return nums.length
+}
+
+/*var removeElement = function(nums, val) {
+  let index = 0;
+  for(const num of nums) {
+    if(num !== val) {
+      nums[index] = num;
+      index++;
+    }
+  }
+  console.log(42, nums)
+  return index;
+};*/
+
+console.log(32,removeElement([3,2,2,3], 3))
+</script>
+</body>
+</html>

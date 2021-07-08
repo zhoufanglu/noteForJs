@@ -7,19 +7,17 @@
 <body>
 <button>mock request</button>
 <script>
-  document.querySelector('button').onclick= async function (){
-    const res = await fn()
-  }
+  console.log(1);
+  const promise = new Promise((resolve, reject) => {
+    console.log(2)
+    resolve()
+    console.log(3)
+  })
+  promise.then(() => {
+    console.log(4)
+  })
+  console.log(5)
 
-  function fn(){
-    const P = new Promise((resolve, reject) => {
-      reject(1)
-    }).catch(err=>{
-      console.log(21, err)
-      return Promise.reject(err)
-    })
-    return P
-  }
 
 </script>
 </body>
