@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  /**
+   * @param {number[]} nums
+   * @return {number}
+   */
+  var maxSubArray = function(nums) {
+    const len = nums.length
+    if(len === 1){
+      return nums[0]
+    }
+    let max = 0
+    for(let i=0;i<len;i++){
+      console.log('--------'+nums[i])
+      for(let j=i+1;j<len;j++){
+        let tempArr = [...nums]
+        console.log(i,j)
+        console.log(tempArr.splice(i,j))
+      }
+    }
+
+  };
+  maxSubArray([1,2,3,4])
+</script>
+</body>
+</html>

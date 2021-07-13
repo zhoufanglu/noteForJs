@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>输出console方法</button>
+<script>
+  //arr.reduce(callback,[initialValue])
+  /*
+  callback （执行数组中每个值的函数，包含四个参数）
+
+  1、previousValue （上一次调用回调返回的值，或者是提供的初始值（initialValue））
+  2、currentValue （数组中当前被处理的元素）
+  3、index （当前元素在数组中的索引）
+  4、array （调用 reduce 的数组）
+
+  initialValue （作为第一次调用 callback 的第一个参数。）//设置为默认值，可以是任何对象，{number,string,obj,array}
+*/
+  //计算每项出现的次数
+  /*  let arr = ['a', 'a', 'c', 'd']
+    let sum = arr.reduce((prev, cur, index, arr) => {
+      console.log('prev', 'cur', 'index')
+      console.log(prev, cur, index)
+
+      if (cur in prev) {
+        prev[cur]++
+      } else {
+        prev[cur] = 1
+      }
+      return prev
+    }, {})
+
+    document.querySelector('button').onclick=function (){
+      fn()
+    }*/
+  //单数组去重
+  /*  let arrTemp = ['a', 'a', 'c', 'd']
+    const arr_1 = arrTemp.reduce((prev, cur, index, arr)=>{
+      console.log(cur)
+      if(!prev.includes(cur)){
+        prev.push(cur)
+      }
+      return prev
+    }, [])
+    console.log(46, arr_1)*/
+  //数组对象去重
+  /*let arrTemp = [
+    {name: 'a', age: 1},
+    {name: 'a', age: 1},
+    {name: 'b', age: 1},
+    {name: 'c', age: 1},
+    {name: 'c', age: 1},
+  ]
+  const arr_1 = arrTemp.reduce((prev, cur, index, arr)=>{
+    const findIndex = prev.findIndex(i=>i.name===cur.name)
+    if(findIndex === -1){
+      prev.push(cur)
+    }
+    return prev
+  }, [])
+  console.log(46, arr_1)*/
+
+  //数组降维 2=>1
+  /*  let arr = [[0, 1], [2, 3], [4, 5]]
+    let newArr = arr.reduce((pre, cur, index, arr)=>{
+      console.log(pre)
+      pre = pre.concat(cur)
+      return pre
+    },[])
+    console.log(newArr); // [0, 1, 2, 3, 4, 5]*/
+  //数组降维 多=>1
+  /*let arr = [-1, [0, 1], [2, 3], [4, [5, 6, 7, [8]]]]
+  function arrFlat(arr, val) {
+    return arr.reduce((prev, cur, index, arr) => {
+      if(Array.isArray(cur)){
+        //如果是数组，继续遍历当前对象，并且返回prev
+        prev = prev.concat(arrFlat(cur))
+      }else{
+        //如果已经不是数组了，直接拼接cur
+        prev = prev.concat(cur)
+      }
+      return prev
+    }, [])
+  }
+
+  const val = arrFlat(arr)
+  console.log(87, val)*/
+
+</script>
+</body>
+</html>

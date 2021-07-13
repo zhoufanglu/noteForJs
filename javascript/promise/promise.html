@@ -6,6 +6,11 @@
 </head>
 <body>
 
+<button id="btnA">A</button>
+<button id="btnB">B</button>
+<button id="btnC">C</button>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
   /**
    * promise
@@ -62,7 +67,7 @@ new Promise((resolve, reject) => {
 }).then(res=>{
   console.log('p_2_then_2', res)
 })*/
-  console.log('foo', foo())
+/*  console.log('foo', foo())
   function bar(res) {
     console.log('bar', res)
   }
@@ -72,7 +77,108 @@ new Promise((resolve, reject) => {
     }).then(res=>{
       bar(res)
     })
+  }*/
+/*  let p = new Promise((resolve, reject) => {
+    reject(1)
+  })
+  p.then(res=>{
+    console.log(res)
+  },err=>{
+    console.log(err)
+  })*/
+  /**********************定时器封装***********************/
+  //1s后执行一次， 2s后执行一次
+  /*setTimeout(()=>{
+    console.log('1s后，第一次执行')
+    setTimeout(()=>{
+      console.log('2s后，第二次执行')
+    },2000)
+  }, 1000)*/
+  /*function timeOut(delay=1000) {
+    return new Promise(resolve => {
+      setTimeout(()=>{
+        resolve('执行')
+      },delay)
+    })
   }
+  timeOut(1000).then(res=>{
+    console.log(res)
+    return timeOut(2000)
+  }).then(res=>{
+    console.log(res)
+    return timeOut(3000)
+  }).then(res=>{
+    console.log(res)
+  })*/
+  /*const p1 = new Promise(resolve => {
+    resolve(1)
+  })
+  const p2 = new Promise(resolve => {
+    resolve(2)
+  })
+  const p3 = new Promise(resolve => {
+    resolve(3)
+  })
+  const p4 = new Promise(resolve => {
+    resolve(4)
+  })
+  Promise.all([p1,p2,p3,p4]).then(res=>{
+    console.log(res)
+  })
+
+  function getA(){
+    return axios.get('http://127.0.0.1:7001/testA')
+  }
+  function getB(){
+    return axios.get('http://127.0.0.1:7001/testB')
+  }
+  function getC(){
+    return axios.get('http://127.0.0.1:7001/testC')
+  }
+
+  Promise.all([getA(),getB(),getC()]).then(res=>{
+    console.log(res)
+    res.forEach(i=>{
+      console.log(i.data.data)
+    })
+  })*/
+
+  /*getA().then(res=>{
+    console.log(131, res.data.data)
+  })*/
+
+  /*console.log('----')
+  const doms = document.querySelectorAll('button')
+  console.log(150, doms)
+  for(var i=0;i<doms.length;i++){
+    doms[i].onclick=function (e){
+      console.log(i)
+    }
+  }*/
+ /* async function test(){
+    const res= await async function innerFn(){await 'xxx'}
+    console.log(160)
+  }
+  test()*/
+  function sleep(delay=2000) {
+    return new Promise((resolve, reject)=>{
+      setTimeout(()=>{
+        resolve('执行')
+      },delay)
+    })
+  }
+  /*async function fn(){
+    for(let i of ['A','B']){
+      await sleep(2000)
+      console.log(i)
+    }
+  }*/
+  for(let i of ['A', 'B']){
+    sleep().then(i=>{
+      console.log(i)
+    })
+  }
+  //fn()
 
 </script>
 </body>
