@@ -173,12 +173,37 @@ new Promise((resolve, reject) => {
       console.log(i)
     }
   }*/
-  for(let i of ['A', 'B']){
-    sleep().then(i=>{
-      console.log(i)
+  /*for(let i of ['A', 'B']){
+    await sleep()
+    console.log(i)
+  }*/
+  //fn()
+  function query (val){
+    return new Promise(resolve => {
+      axios.get(`http://127.0.0.1:7002/getValById?name=${val}`).then(res=>{
+        console.log(res)
+      })
     })
   }
-  //fn()
+  query('x')
+  console.log('189')
+  /*let arr = []
+  for(let i =0;i< 100; i++){
+    arr.push(query(i))
+  }
+  console.log(arr)*/
+/*  const nameList = [...new Array(1000).keys()];
+
+  (async ()=>{
+    for (let i of nameList){
+      const {data} = await query(i)
+      console.log(188, data.data)
+    }
+  })()
+  */
+  /*Promise.all([query(1),query(2), query(3),query(1)]).then(vals=>{
+    console.log(193, vals)
+  })*/
 
 </script>
 </body>

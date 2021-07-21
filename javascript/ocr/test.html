@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="PDF Viewer" />
+    <title>Convert PDF To Image</title>
+</head>
+<body>
+<div class="stats">
+    <div class="box">
+        <span class="value">大小</span>
+        <span class="parameter" id="sizeText"></span>
+    </div>
+    <div class="box">
+        <span class="value">页数</span>
+        <span class="parameter" id="pagesText"></span>
+    </div>
+</div>
+<div id="imgDiv"></div>
+</body>
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+//引入pdf.js
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.0.288/build/pdf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.0.288/build/pdf.worker.min.js"></script>
+<script>
+  //文件地址
+  var pdfUrl = 'https://*******.pdf';
+  var xhr = new XMLHttpRequest();
+  xhr.open("get", pdfUrl, true);
+  //至关重要
+  xhr.responseType = 'arraybuffer';  //'blob'也可以，如果是'Blob'需要用FileReader转换为'arraybuffer'
+  xhr.onload = function () {
+    if (this.status === 200) {
+      var oArrayBuffer  = this.response;
+      console.log(oArrayBuffer);
+      var fileSize = oArrayBuffer.byteLength;
+      var mb;
+      if(fileSize) {
+        mb = fileSize / 1048576;
+        if(mb > 10) {
+          alert("文件大小不能>10M");
+          return;
+        }
+      }
+      $("#sizeText").text(mb.toFixed(2) + "Mb");
+      var typedarray = new Uint8Array(oArrayBuffer);
+      //中文字体缺失
+      PDFJS.cMapUrl = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@2.0.288/cmaps/';
+      PDFJS.cMapPacked = true;
+      PDFJS.getDocument(typedarray).then(function(pdf) {  //PDF转换为canvas
+        if(pdf) {
+          var pageNum = pdf.numPages;
+          $("#pagesText").text(pageNum);
+
+          for(var i = 1; i <= pageNum; i++) {
+            var canvas = document.createElement('canvas');
+            canvas.id = "pageNum" + i;
+            $("#imgDiv").append(canvas);
+            var context = canvas.getContext('2d');
+            openPage(pdf, i, context);
+          }
+        }
+      });
+    }
+  }
+  xhr.send();
+  function openPage(pdfFile, pageNumber, context) {
+    var scale = 2; //如果清晰度模糊，可以将值调大
+    pdfFile.getPage(pageNumber).then(function(page) {
+      viewport = page.getViewport(scale); // reference canvas via context
+      var canvas = context.canvas;
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+      canvas.style.width = "100%";
+      canvas.style.height = "100%";
+      var renderContext = {
+        canvasContext: context,
+        viewport: viewport
+      };
+      page.render(renderContext);
+    });
+  };
+</script>
+</html>
