@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>a</div>
+<div>b</div>
+<div>c</div>
+<script>
+    /*const res = Array.from([1,2,3], (i)=>{
+      console.log(i)
+      return i+1
+    })
+    console.log(res)*/
+    //Map
+    /*const map = new Map().set(1,2,3)
+    console.log(map)*/
+    //浅拷贝
+    /*const a1 = [
+      {name:'a', val:1},
+      {name:'b', val:2},
+    ]
+    //const a2 = Array.from(a1)
+    const [...a2] = a1
+    a1[0].val = 100
+    console.log(a2)*/
+    /*let o1 = {name: 'a', age:1}
+    let o2 = Object.assign({}, o1)
+    o1.name='b'
+    console.log(o2)*/
+   /* const a = [1,2,3,4]
+    const res = a.every(i=>{
+      console.log(i)
+      return i===3
+    })
+    console.log('res', res)*/
+    /*const m = new Map()
+    const a1 = [1], a2 = [2]
+    m.set(a1, 1)
+    m.set(a2, 2)
+   console.log( m.keys())
+   console.log( m.values())
+
+    for(let i of m){
+      console.log(i)
+    }*/
+
+    /*let str = 'abc'
+    let arr = ['a', 'b', 'c']
+    let map = new Map().set('a', 1).set('b','2').set('c', 3)
+    let set = new Set().add('a').add('b').add('c')
+    let nodeList = document.querySelectorAll('div')
+    //返回迭代器
+    console.log(str[Symbol.iterator]) //StringIterator {}
+    console.log(arr[Symbol.iterator]())//ArrayIterator {}
+    console.log(map[Symbol.iterator]().next().value)//MapIterator {}*/
+    //...
+    //...
+    /*let arr = ['a', 'b']
+    const iter =  arr[Symbol.iterator]()
+    console.log(63, iter.next())
+    arr.splice(1, 0, 'z')
+    console.log(arr)
+    console.log(63, iter.next())*/
+    /********************** iterator 迭代器 ***********************/
+    //实现多种对象类型遍历
+    /*const str = '123',
+      arr = [1,2,3],
+      map = new Map().set('a', 1).set('b', 2).set('c', 3)
+      set = new Set().add(1).add(2).add(3)
+      nodeList = document.querySelectorAll('div')
+    const traverse = data => {
+      const iter = data[Symbol.iterator]()
+      let flagDone = false
+      while(!flagDone){
+        const {value, done} = iter.next()
+        flagDone = done
+        if(!done){
+          console.log(value)
+        }
+      }
+      console.log('----')
+    }
+    traverse(str)
+    traverse(arr)
+    traverse(map)
+    traverse(set)
+    traverse(nodeList)*/
+    /********************** weakMap ***********************/
+    /*const wm = new WeakMap()
+    const obj = {key: 'xx'}
+    wm.set(obj, '1')
+    console.log(wm.get(obj))
+    console.log(wm)*/
+    /********************** Set ***********************/
+    const set = new Set()
+    set.add(1).add(2).add(3)
+    /*for(let i of set.values()){
+      console.log(i)
+    }*/
+    /*const iter = set[Symbol.iterator]()
+    console.log(iter.next())
+    console.log(iter.next())*/
+    set.forEach((i,index)=>{
+      console.log(i, index)
+    })
+</script>
+</body>
+</html>
