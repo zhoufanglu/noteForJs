@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<a href='/home'>home history</a>
+<a href='/about'>about history</a>
+<!-- 渲染路由模块 -->
+<div id="view"></div>
+</body>
+<script>
+  let view = document.querySelector("#view")
+
+  // 路由跳转
+  function push(path = "/home"){
+    window.history.pushState(null, '', path)
+    console.log(window.history)
+    update()
+  }
+  // 更新路由模块视图
+  function update(){
+    view.innerHTML = location.pathname
+  }
+
+  window.addEventListener('popstate', ()=>{
+    update()
+  })
+  window.addEventListener('load', ()=>{
+    let links = document.querySelectorAll('a[href]')
+    //绑定a标签的点击事件，点击一下Push进去
+    links.forEach(el => el.addEventListener('click', (e) => {
+      // 阻止a标签默认行为
+      e.preventDefault()
+      push(el.getAttribute('href'))
+    }))
+    push()
+  })
+</script>
+</html>
+
