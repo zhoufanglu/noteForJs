@@ -4,58 +4,45 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        .box{
-            width: 100px;
-            height: 100px;
-            border: solid 1px red;
-            outline: 1px dashed yellow;
-            padding: 5px 3px 4px;
-            margin: 1px 5px;
-        }
-        svg{
-            border: solid 1px red;
-        }
-        rect{
-            border: solid 1px red;
-            background-color: red;
-        }
+
     </style>
 </head>
 <h1>test</h1>
 <div id="el">
-    <svg width="750" height="500"
-         xmlns="http://www.w3.org/2000/svg"
-    >
-        <rect x="10" y="10" width="100" height="100"
-              fill="url(../)"
-        />
-    </svg>
-    <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-    </ul>
-    <div>div</div>
-    <div>div2</div>
-    <a href="./prototype.html?name=123">go test</a>
-    <div class="box">
-
+    <div id="app">
+        <button @click="++num">{{num}}</button>
+        <input type="text" v-model="num">
     </div>
 </div>
 <body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
 <script>
-  let arr = [{name:'a', age: 1},{name:'b', age: 2}, {name:'c', age: 3}]
-
-  let brr = new Array(3).fill({name:'未定义', age: 0})
-
-  arr.forEach((i, index)=>{
-    brr[index].name = i.name
-    brr[index].age = i.age
-  })
-  console.log(39, brr)
-
-  /*console.log(35, brr)
-  brr[0] = {name:'已定义', age: -1}*/
+  let vm
+  const render = ()=>{
+    vm = new Vue({
+      el: '#app',
+      data: {
+        num: 1
+      },
+      mounted(){
+        console.log('mounted')
+      },
+      methods: {
+        btnClick() {
+          this.num++
+          console.log(this)
+        }
+      }
+    })
+    console.log(vm)
+  }
+  render()
+  setTimeout(()=>{
+    console.log('重新render')
+    //vm = null
+    render()
+  }, 4000)
 </script>
 </body>
 </html>

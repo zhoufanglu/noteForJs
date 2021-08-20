@@ -6,13 +6,20 @@
 </head>
 <body>
 <script>
-    let a = {name: 'a'}
+    /*let a = {name: 'a'}
     let b = {}
     b = Object.assign(a)
     b.name = 'b'
     console.log('a', a)
     console.log('b', b)
-    //console.log('c', c)
+    //console.log('c', c)*/
+    let arr = [
+      {name: 'a', age: 1},
+      {name: 'b', age: 2},
+    ]
+    let res = arr.find(i=>i.name==='a')
+    res.name = 'xx'
+    console.log(arr)
 </script>
 </body>
 </html>

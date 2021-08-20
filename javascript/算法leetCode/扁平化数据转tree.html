@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  /**
+   *
+   * [
+   {
+        "id": 1,
+        "name": "部门1",
+        "pid": 0,
+        "children": [
+            {
+                "id": 2,
+                "name": "部门2",
+                "pid": 1,
+                "children": []
+            },
+            {
+                "id": 3,
+                "name": "部门3",
+                "pid": 1,
+                "children": [
+                    // 结果 ,,,
+                ]
+            }
+        ]
+    }
+   ]
+   */
+  let arr = [
+    {id: 1, name: '部门1', pid: 0},
+    {id: 2, name: '部门2', pid: 1},
+    {id: 3, name: '部门3', pid: 1},
+    {id: 4, name: '部门4', pid: 3},
+    {id: 5, name: '部门5', pid: 4},
+  ]
+  const res = arr.reduce((result, cur, index, arr) => {
+    if(cur.pid === 0){
+      const children = arr.filter(i=>i.pid === cur.id)
+      cur.children = children
+      result.push(cur)
+      console.log(45, result)
+    }else{
+      const children = arr.filter(i=>i.pid === cur.id)
+      cur.children = children
+      //找出cur在result的位置 然后塞入,以下操作多余
+      /*setChildren(result, cur)
+      function setChildren(arr=result, cur){
+        arr.forEach(i=>{
+          if(i.id===cur.id){
+            i.children = children
+            i.test = 'test'
+          }else{
+            if(i.children){
+              setChildren(i.children, cur)
+            }
+          }
+        })
+      }*/
+    }
+    return result
+  },[])
+  console.log('res', res)
+  console.log('-----')
+
+  const newArr = arr.reduce((total, item, index, list) => {
+    if (item.pid === 0) {
+      total.push({item, children: list.filter(f => f.pid === item.id)})
+    } else {
+      item.children = list.filter(f => f.pid === item.id)
+    }
+    return total
+  }, [])
+  console.log(78, newArr)
+
+
+  //找出数组内某个id的值， 给他添加属性found
+ /* const nestedArr = [
+    {
+      id: 11,
+      name: 'a-1',
+    },
+    {
+      id: 12,
+      name: 'a-2',
+      children: [
+        {
+          id: 121,
+          name: 'a-2-1',
+        },
+        {
+          id: 122,
+          name: 'a-2-2',
+        },
+      ]
+    },
+    {
+      id: 13,
+      name: 'b',
+      children:[
+        {
+          id: 131,
+          name: 'b-1',
+          children: [
+            {
+              id: 1311,
+              name: 'b-1-1'
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  //正则表达式 匹配全部"\" 需要加 /g
+  let reg = /\\/g;
+  //使用replace方法将全部匹配正则表达式的转义符替换为空
+  let replaceAfter = JSON.stringify(nestedArr).replace(reg,'');
+  console.log(replaceAfter)*/
+
+  //找到id为 1311的值 添加属性
+  /*findItem(nestedArr, 1311)
+  function findItem(arr=nestedArr, id){
+    arr.forEach(i=>{
+      if(i.id===id){
+        i.found = true
+      }else{
+        if(i.children){
+          findItem(i.children, id)
+        }
+      }
+    })
+  }
+  console.log(120, nestedArr)*/
+
+</script>
+</body>
+</html>
