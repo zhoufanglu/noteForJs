@@ -39,7 +39,7 @@
     {id: 4, name: '部门4', pid: 3},
     {id: 5, name: '部门5', pid: 4},
   ]
-  const res = arr.reduce((result, cur, index, arr) => {
+  /*const res = arr.reduce((result, cur, index, arr) => {
     if(cur.pid === 0){
       const children = arr.filter(i=>i.pid === cur.id)
       cur.children = children
@@ -49,7 +49,7 @@
       const children = arr.filter(i=>i.pid === cur.id)
       cur.children = children
       //找出cur在result的位置 然后塞入,以下操作多余
-      /*setChildren(result, cur)
+      /!*setChildren(result, cur)
       function setChildren(arr=result, cur){
         arr.forEach(i=>{
           if(i.id===cur.id){
@@ -61,7 +61,7 @@
             }
           }
         })
-      }*/
+      }*!/
     }
     return result
   },[])
@@ -76,7 +76,24 @@
     }
     return total
   }, [])
-  console.log(78, newArr)
+  console.log(78, newArr)*/
+
+
+  const resArr = arr.reduce((prev, cur, index, list)=>{
+    console.log('cur', cur.id)
+    const childList = list.filter(i=>cur.id === i.pid)
+    console.log(123, childList)
+    if(cur.pid === 0){
+      console.log(87, childList)
+      prev.push({...cur, ...{children: childList}})
+    }else{
+      cur.children = childList
+    }
+    console.log('---------')
+    return prev
+  },[])
+  console.log(127, resArr)
+
 
 
   //找出数组内某个id的值， 给他添加属性found
@@ -136,6 +153,21 @@
     })
   }
   console.log(120, nestedArr)*/
+  console.log('----')
+
+  var a = 0
+  if(true){
+    console.log('1', typeof a)
+    a = 1
+    console.log('2', typeof a)
+    function a() {}
+    console.log('3', typeof a)
+    a =2
+    console.log('4', typeof a)
+    console.log('里面', a)
+  }
+  console.log('5', typeof a)
+  console.log('外面', a)
 
 </script>
 </body>
