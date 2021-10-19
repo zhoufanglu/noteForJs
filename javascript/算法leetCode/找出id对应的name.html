@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<div id="root">
+    <ul>
+        <li>
+            <a href="">
+                <img src="" alt="">
+            </a>
+        </li>
+        <li>
+            <span></span>
+        </li>
+        <li>
+        </li>
+    </ul>
+    <p></p>
+    <button></button>
+</div>
+<body>
+<script>
+  var cityData = [
+    {
+      id: 1,
+      name: '广东省',
+      children: [
+        {
+          id: 11,
+          name: '深圳',
+          children: [
+            {
+              id: 111,
+              name: '宝安',
+              children: [
+                {
+                  id: 1111,
+                  name: '西乡',
+                  children:[
+                    {
+                      id: 11111,
+                      name: '坪洲',
+                      children:[]
+                    },
+                    {
+                      id: 11112,
+                      name: '灵芝',
+                      children:[]
+                    }
+                  ]
+                },
+                {
+                  id: 1112,
+                  name: '南山',
+                  children:[
+                    {
+                      id: 11121,
+                      name: '科技园',
+                      children:[]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: 112,
+              name: '福田',
+              children: []
+            }
+          ]
+        },
+        {
+          id: 12,
+          name: '广州',
+          children: [
+            {
+              id: 122,
+              name: '白云区',
+              children: [
+                {
+                  id: 1222,
+                  name: '白云区',
+                  children: []
+                }
+              ]
+            },
+            {
+              id: 122,
+              name: '珠海区',
+              children: []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: 2,
+      name: '湖南省',
+      children: []
+    }
+  ];
+  //比如说 我要id是11112的name返回是灵芝，请问你有几种解法？？
+  /**第一种递归**/
+  function findNameById(arr, id){
+    arr.forEach(i=>{
+      if(i.id === id){
+        console.log(i.name)
+      }else if(i.id !== id && i.hasOwnProperty('children')) {
+        findNameById(i.children, id)
+      }
+    })
+  }
+  //findNameById(cityData, 1222)
+  /**深度优先**/
+  /*function deepFirstSearch(node,nodeList) {
+    if (node) {
+      nodeList.push(node);
+      var children = node.children;
+      for (var i = 0; i < children.length; i++)
+        //每次递归的时候将 需要遍历的节点 和 节点所存储的数组传下去
+        deepFirstSearch(children[i],nodeList);
+    }
+    return nodeList;
+  }*/
+  /*function deepFirstSearch(node,nodeList) {
+    console.log(119,node.children[0])
+    if(node.children[0].length !== 0){
+
+    }
+  }
+  let root = document.getElementById('root')
+  console.log(128, root)
+  const res = deepFirstSearch(root,nodeList=[])
+  console.log(129, res)*/
+  const nodeList = [
+    {
+      name: 'div',
+      id: 1,
+      children: [
+        {
+          name: 'ul',
+          id: 11,
+          children: [
+            {
+              name: 'li',
+              id: 111,
+              children: [
+                {
+                  name: 'a',
+                  id: 1111,
+                  children: [
+                    {
+                      name: 'img',
+                      id: 11111
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              name: 'li',
+              id: 112,
+              children: [
+                {
+                  name: 'span',
+                  id: 1121
+                }
+              ]
+            },
+            {
+              name: 'li',
+              id: 113,
+            },
+          ]
+        },
+        {
+          name: 'p',
+          id: 12,
+        },
+        {
+          name: 'button',
+          id: 13,
+        },
+      ]
+    }
+  ]
+  console.log(189, nodeList)
+  //let res = []
+  //深度优先遍历
+  function deepTraverse(list, res=[]) {
+
+  }
+  //console.log(200, res)
+  console.log(202, deepTraverse(nodeList))
+  //广度优先遍历
+  function breadthFirstSearch(list) {
+    let stack = [], item = null
+    //将第一层节点放入栈， 先进后出
+    list.forEach(i=>{
+      stack.push(i)
+    })
+    console.log(211, stack)
+    /*while(stack.length) {
+      //取出栈内的第一项
+      item = stack.shift()
+      //如果该项有子节点，继续添加进入栈底
+      if(item.hasOwnProperty('children')){
+        stack = stack.concat(item.children)
+      }
+    }*/
+
+    console.log(221, stack)
+
+  }
+  breadthFirstSearch(nodeList)
+
+  console.log('-------------------')
+  const data = [{
+    name: 'a',
+    children: [
+      {
+        name: 'a1',
+        children: [
+          { name: 'a11' },
+          { name: 'a12' },
+        ]
+      },
+      { name: 'a2', },
+      { name: 'a3', },
+    ],
+  },
+    {
+      name: 'b',
+      children: [
+        { name: 'b1', },
+        { name: 'b2', },
+        { name: 'b3', },
+      ],
+    }
+  ]
+  // 创建一个执行队列, 当队列为空的时候则结束
+  /**********************广度优先遍历***********************/
+  function breadthFirstSearch(data) {
+    let queue = []//模拟一个队列, 先进先出
+    let res = [] // 广度遍历顺序集
+    queue = JSON.parse(JSON.stringify(data)) // 深拷贝一下
+    while (queue.length > 0) {
+      let item = queue.shift()//取出队列的第一项给item, 删除队列内的第一项
+      res.push(item.name) //值存入顺序
+      if (item.hasOwnProperty('children')) { //如果有子元素，再次存入队列
+        queue.push(...item.children)
+      }
+    }
+    return res
+  }
+
+  console.log('广度优先',breadthFirstSearch(data))
+  //广度优先 (10) ['a', 'b', 'a1', 'a2', 'a3', 'b1', 'b2', 'b3', 'a11', 'a12']
+
+  /**********************深度优先遍历***********************/
+  //递归, 往下找到一个节点，就放入res，子节点也是如此
+  function depthFirstSearch(data, res = []) {
+    data.forEach(i=>{
+      res.push(i.name)
+      if(i.hasOwnProperty('children')){ //如果有子元素，继续进行查找
+        depthFirstSearch(i.children, res)
+      }
+    })
+    return res
+  }
+  console.log('深度优先遍历顺序', depthFirstSearch(data))
+</script>
+</body>
+</html>
