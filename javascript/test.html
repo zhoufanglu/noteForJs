@@ -18,153 +18,19 @@
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 
 <script>
-  let chooseStudent = [
-    {
-      "userImg": null,
-      "indentityCode": null,
-      "studentNumber": null,
-      "studentIDNumber": null,
-      "tenantId": "ef49091b-cd02-db77-f3b7-39f95d393b3e",
-      "userName": "jingge",
-      "email": "jingge@tempmail.com",
-      "name": "jingge",
-      "surname": "0",
-      "emailConfirmed": false,
-      "phoneNumber": null,
-      "phoneNumberConfirmed": false,
-      "twoFactorEnabled": false,
-      "lockoutEnabled": true,
-      "isLockedOut": false,
-      "lockoutEnd": null,
-      "concurrencyStamp": "bbb12be9edbf4207b4bc8a9a74b4e04d",
-      "creationTime": "2020-12-10T13:07:51.849723",
-      "lastModificationTime": "2021-09-03T17:01:23.8748946",
-      "id": "c165c240-eb1e-2de1-afc1-39f95d393b62",
-      "extraProperties": {
-        "Roles": "admin",
-        "OUName": "研发中心",
-        "OUId": "9654d4b9-3f3c-0d14-6241-39f95d7467dc"
-      }
-    },
-    {
-      "userImg": null,
-      "indentityCode": null,
-      "studentNumber": null,
-      "studentIDNumber": null,
-      "tenantId": "ef49091b-cd02-db77-f3b7-39f95d393b3e",
-      "userName": "admin",
-      "email": "admin@abp.io",
-      "name": "admin",
-      "surname": null,
-      "emailConfirmed": false,
-      "phoneNumber": null,
-      "phoneNumberConfirmed": false,
-      "twoFactorEnabled": false,
-      "lockoutEnabled": true,
-      "isLockedOut": false,
-      "lockoutEnd": null,
-      "concurrencyStamp": "e7a06a0b13f14af785a3f65384e63ca1",
-      "creationTime": "2020-12-10T13:07:52.2175409",
-      "lastModificationTime": "2021-04-16T17:36:44.1225241",
-      "id": "c898215b-a8d0-5ec9-737f-39f95d393d0b",
-      "extraProperties": {
-        "Roles": "admin",
-        "OUName": "",
-        "OUId": ""
-      }
-    },
-    {
-      "userImg": null,
-      "indentityCode": null,
-      "studentNumber": null,
-      "studentIDNumber": null,
-      "tenantId": "ef49091b-cd02-db77-f3b7-39f95d393b3e",
-      "userName": "xiaozhengpeng",
-      "email": "xiaozhengpeng@jg.com",
-      "name": "肖老师",
-      "surname": null,
-      "emailConfirmed": false,
-      "phoneNumber": "13545687851",
-      "phoneNumberConfirmed": false,
-      "twoFactorEnabled": false,
-      "lockoutEnabled": false,
-      "isLockedOut": false,
-      "lockoutEnd": null,
-      "concurrencyStamp": "aea10f8559584ac4b3d0a9a0b6503bf5",
-      "creationTime": "2020-12-10T14:15:47.5350076",
-      "lastModificationTime": "2021-09-17T13:36:38.3566889",
-      "id": "521f4344-5962-0d47-e35c-39f95d776c3b",
-      "extraProperties": {
-        "OUId": "9654d4b9-3f3c-0d14-6241-39f95d7467dc",
-        "OUName": "研发中心",
-        "Roles": "teacher"
-      }
-    },
-    {
-      "userImg": null,
-      "indentityCode": null,
-      "studentNumber": null,
-      "studentIDNumber": null,
-      "tenantId": "ef49091b-cd02-db77-f3b7-39f95d393b3e",
-      "userName": "wangdecheng",
-      "email": "wangdecheng@jg.com",
-      "name": "王老师",
-      "surname": null,
-      "emailConfirmed": false,
-      "phoneNumber": "13545687852",
-      "phoneNumberConfirmed": false,
-      "twoFactorEnabled": false,
-      "lockoutEnabled": false,
-      "isLockedOut": false,
-      "lockoutEnd": null,
-      "concurrencyStamp": "632d9b8f4d274ecbbfb30190291d6b13",
-      "creationTime": "2020-12-10T14:15:47.6307346",
-      "lastModificationTime": "2021-07-29T17:15:22.7879673",
-      "id": "f66a7c75-0bd6-84cd-daea-39f95d776ca2",
-      "extraProperties": {
-        "OUId": "9654d4b9-3f3c-0d14-6241-39f95d7467dc",
-        "OUName": "研发中心",
-        "Roles": "teacher"
-      }
-    }
-  ]
-
-  const examStudent = chooseStudent.reduce((total, currentVal) => {
-    if (currentVal.extraProperties.OUId) {
-      if (!Object.prototype.hasOwnProperty.call(total, currentVal.extraProperties.OUId)) {
-        total[currentVal.extraProperties.OUId] = []
-      }
-      total[currentVal.extraProperties.OUId].push(currentVal)
-    }
-    else {
-      if (!total.nocategory) {
-        total.nocategory = []
-      }
-      total.nocategory.push(currentVal)
-    }
-    return total
-  }, [])
-
-  console.log(148, examStudent)
-  console.log(149, examStudent['nocategory'])
-  console.log('---')
-
-  const arr2 = chooseStudent.reduce((prev,cur,index,arr)=>{
-    const classId = cur.extraProperties.OUId
-    //判断有无id，无id的存放新的地址
-    if(classId){
-      //判断有没有这个属性，如果有就push，没有就创建
-      if(prev.hasOwnProperty(classId)){
-        prev[classId].push(cur)
+    let n = 5
+    function fn(n, sum=0) {
+      if(n>0){
+        sum += n
+        n--
+        fn(n, sum)
+        console.log('n', n)
+        console.log('sum', sum)
       }else{
-        prev[classId] = [cur]
+        return sum
       }
-    }else{
-      prev['nocategory'].push(cur)
     }
-    return prev
-  }, {nocategory: []})
-  console.log(157, arr2)
+    console.log(30, fn(n))
 </script>
 </body>
 </html>

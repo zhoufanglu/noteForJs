@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+function Fn(name) {
+  this.name = name
+}
+
+let f = new Fn('David')
+
+console.log(f.__proto__ === Fn.prototype) //true
+console.log(Fn.prototype.__proto__ === Object.prototype) //true
+console.log(Object.prototype.__proto__ === null) //对象兼空
+
+
+</script>
+</body>
+</html>
