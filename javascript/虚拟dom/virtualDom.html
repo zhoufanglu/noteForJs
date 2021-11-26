@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Learning Virtual Dom</h1>
+    <ul class="list">
+        <li class="list-item">List item</li>
+    </ul>
+</body>
+</html>
+<script>
+  const listItemOne = document.getElementsByClassName("list-item")[0]; // 获取节点
+  listItemOne.textContent = "List item one"; // 修改对应的文本内容
+  const listItemTwo = document.createElement("li"); // 创建一个元素对象
+  listItemTwo.classList.add("list-item"); // 添加子元素
+  listItemTwo.textContent = "List item two";
+  document.querySelector('.list').appendChild(listItemTwo);
+
+  const vdom = {
+    tagName: "html",// 根节点
+    children: [
+      { tagName: "head" },
+      {
+        tagName: "body",
+        children: [
+          {
+            tagName: "ul",
+            attributes: { "class": "list" },
+            children: [
+              {
+                tagName: "li",
+                attributes: { "class": "list-item" },
+                textContent: "List item"
+              } // end li
+            ]
+          } // end ul
+        ]
+      } // end body
+    ]
+  } // end html
+
+</script>
