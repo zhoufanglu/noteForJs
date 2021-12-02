@@ -12,12 +12,27 @@
     {name: 'bbb', age: '1'},
     {name: 'bbb', age: '1'},
   ]
-  const test = objArr.reduce((cur,next) => {
-    objArr[next.name] ? "" : objArr[next.name] = true
-      && cur.push(next);
-    return cur
+  //reduce去重
+  const test = objArr.reduce((prev, cur, index, arr) => {
+    const findIndex = prev.findIndex(i=>i.name===cur.name)
+    if(findIndex === -1) prev.push(cur)
+    return prev
   },[])
-  console.log(20, test)
+  console.log('----------------')
+
+  //map去重
+  const newArr = [], map = new Map()
+  objArr.forEach(i=>{
+    if(map.has(i.name)){
+      map.set(i.name, true)
+    }else{
+      map.set(i, false)
+      newArr.push(i.name)
+    }
+  })
+  console.log(33, newArr)
+  console.log(34, map)
+
 </script>
 </body>
 </html>
