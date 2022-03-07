@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="text-align: center; padding-top: 50px">
+    <input type="file" id="avatar" />
+    <button onclick="to_upload_file()">上传</button>
+    <br>
+    <br>
+</div>
+<script>
+    function to_upload_file() {
+      var file_obj = document.getElementById("avatar").files[0]
+      if(file_obj){
+        var url = "/upload_file";
+        var form = new FormData();
+        form.append("file", file_obj);
+        var xhr = new XMLHttpRequest();
+        xhr.onload = uploadComplete; // 添加 上传成功后的回调函数
+        xhr.onerror =  uploadFailed; // 添加 上传失败后的回调函数
+        xhr.open("POST", url, true);
+        xhr.send(form);
+      }else{
+        alert("请先选择文件后再上传")
+      }
+    }
+    // 上传成功
+    function uploadComplete(e) {
+      console.log("上传成功！", e);
+    }
+    // 上传失败
+    function uploadFailed(e) {
+      console.log("上传失败", e);
+    }
+</script>
+</body>
+</html>

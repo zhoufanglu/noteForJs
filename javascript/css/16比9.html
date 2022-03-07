@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .wrap{
+            width:100%;
+        }
+        /*vmin：相对于可视窗口的宽度或高度中较小的那个，被均分为100单位的vmin*/
+        /*例：当宽度是300，高度是600，那么50vmin则是相对于宽度的50%*/
+        .box{
+            width: 100vw;
+            height: 0px;
+            position: relative;
+            padding-bottom: 56.25%;
+            background: pink;
+            max-height: 100vh;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="box">
+        <p>这是一个16：9的矩形</p>
+    </div>
+</div>
+</body>
+</html>

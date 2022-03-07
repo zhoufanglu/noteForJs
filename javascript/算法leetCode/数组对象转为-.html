@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  const res = {"code":200,"total":13,"data":[{"jobId":424,"name":"jlkhljhlj","type":"flink-sql","displayType":"Flink SQL","description":"jkjlljkljkljkljkljkluiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiljhkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk","engineVersion":null,"currentVersion":null,"creator":"-","startTime":null,"endTime":null,"duration":null,"state":{"name":null,"displayName":null},"createdTime":"2022-02-25 13:30:34"},{"jobId":421,"name":"4564685","type":"flink-jar","displayType":"Flink JAR","description":null,"engineVersion":null,"currentVersion":null,"creator":"-","startTime":null,"endTime":null,"duration":null,"state":{"name":null,"displayName":null},"createdTime":"2022-02-25 11:11:13"},{"jobId":406,"name":"Flink-SQL-Example","type":"flink-sql","displayType":"Flink SQL","description":null,"engineVersion":null,"currentVersion":"v2","creator":"-","startTime":"22-2-25 下午2:39","endTime":"22-2-25 下午2:40","duration":"01m 21s","state":{"name":"CANCELED","displayName":"已取消"},"createdTime":"2022-02-22 18:03:57"},{"jobId":404,"name":"111","type":"flink-jar","displayType":"Flink JAR","description":"111","engineVersion":null,"currentVersion":null,"creator":"-","startTime":null,"endTime":null,"duration":null,"state":{"name":null,"displayName":null},"createdTime":"2022-02-22 16:49:03"},{"jobId":403,"name":"lufangzhou-flink-Sql","type":"flink-sql","displayType":"Flink SQL","description":"flink-sql-desc","engineVersion":null,"currentVersion":"v3","creator":"-","startTime":"22-2-22 下午5:00","endTime":"22-2-22 下午5:00","duration":"1s","state":{"name":"DEPLOYED_FAILED","displayName":"部署失败"},"createdTime":"2022-02-22 16:48:11"},{"jobId":402,"name":"j1","type":"flink-sql","displayType":"Flink SQL","description":null,"engineVersion":null,"currentVersion":"v2","creator":"-","startTime":"22-2-28 上午9:51","endTime":"22-2-28 上午9:51","duration":"3s","state":{"name":"DEPLOYED_FAILED","displayName":"部署失败"},"createdTime":"2022-02-22 11:09:24"},{"jobId":401,"name":"SQL1","type":"flink-sql","displayType":"Flink SQL","description":null,"engineVersion":null,"currentVersion":null,"creator":"-","startTime":null,"endTime":null,"duration":null,"state":{"name":null,"displayName":null},"createdTime":"2022-02-22 09:48:07"},{"jobId":381,"name":"Flink-JAR-Example","type":"flink-jar","displayType":"Flink JAR","description":"能够部署运行的作业，用于测试功能","engineVersion":null,"currentVersion":"v8","creator":"-","startTime":"22-2-23 下午3:16","endTime":"22-2-23 下午3:20","duration":"04m 04s","state":{"name":"FINISHED","displayName":"运行完成"},"createdTime":"2022-02-21 11:05:54"},{"jobId":364,"name":"jon1","type":"flink-sql","displayType":"Flink SQL","description":null,"engineVersion":null,"currentVersion":"v10","creator":"-","startTime":"22-2-21 下午1:11","endTime":"22-2-21 下午1:11","duration":"0s","state":{"name":"DEPLOYED_FAILED","displayName":"部署失败"},"createdTime":"2022-02-18 15:27:54"},{"jobId":363,"name":"Flink SQL test","type":"flink-sql","displayType":"Flink SQL","description":"22","engineVersion":null,"currentVersion":"v1","creator":"-","startTime":"22-2-18 下午5:32","endTime":"22-2-18 下午5:32","duration":"0s","state":{"name":"DEPLOYED_FAILED","displayName":"部署失败"},"createdTime":"2022-02-18 15:00:13"}]}
+  const list = res.data
+  /**
+   * @param list  需要转换的字段
+   * @param exceptProps， 去除不需要转换的字段
+   * 初始化List,数据为空就转换为'-', 支持无限嵌套
+   */
+  function formatList(list, exceptProps=[]){
+    if(!Array.isArray(list)){
+      return []
+    }
+    list.forEach(i=>{
+      i = objPropTo_(i)
+    })
+    return list
+  }
+  // 把对象转属性为空的转为null
+  function objPropTo_ (obj){
+    for(let key in obj){
+      if(Object.prototype.toString.call(obj[key])=== '[object Object]'){
+        // 如果是 再次转换
+        objPropTo_(obj[key])
+      }else{
+        if(
+          (obj[key] === '' ||
+            obj[key] === null ||
+            obj[key] === undefined)
+        ){
+          obj[key] = '-'
+        }
+      }
+    }
+    return obj
+  }
+
+  console.log(47, formatList(list))
+</script>
+</body>
+</html>
