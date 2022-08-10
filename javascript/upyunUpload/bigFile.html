@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<!-- saved from url=(0051)http://mark.file.nieqiping.cn/tools/upload/big.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script src="./js/hash.js"></script>
+    <script src="./js/jquery-1.9.0.min.js"></script>
+    <script src="./js/js-spark-md5.js"></script>
+
+    <style type="text/css">
+        .log {
+            background: #ffd;
+            border: 1px solid orange;
+            padding: 1em;
+            margin: 0 auto;
+            display: none;
+            text-align: left;
+        }
+    </style>
+</head>
+<body style="zoom: 1;">
+<form>
+    上传服务空间：<input id="bucketname" value="fileupload-upyun">
+    操作员账号：<input id="username"  value="hello">
+    操作员密码：<input id="password" value="dF4XhRbnpsvonU1dgdetURncHSwa2Z37">
+    保存路径：<input id="save_key" value="/fileupload-upyun">
+</form>
+<br>
+
+<input id="fileupload" type="file" name="file" onchange="ufload(this)"><br><br>
+<br>
+
+<pre id="fileinfo" class="log"></pre>
+
+<script>
+  var fileinfo;
+  $(function() {
+    fileinfo = document.getElementById("fileinfo")
+
+  });
+
+  function ufload(obj) {
+
+    var blobSlice = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice,
+      file = $(obj).get(0).files[0],
+      chunkSize = 5242880, // 每次读取5MB
+      chunks = Math.ceil(file.size / chunkSize),
+      currentChunk = 0,
+      spark = new SparkMD5.ArrayBuffer(),
+      frOnload = function(e) {
+        fileinfo.innerHTML = "\n文件 MD5 校验： " + Number((parseInt(currentChunk + 1) / chunks) * 100).toFixed(2) + '%';
+        //fileinfo.innerHTML += "\n读取文件 " + parseInt(currentChunk + 1) + " of " + chunks;
+        spark.append(e.target.result);
+        currentChunk++;
+        if (currentChunk < chunks) {
+          loadNext();
+        } else {
+          var md5 = spark.end();
+          fileinfo.innerHTML += "\n读取完成！\n\n文件md5:" + spark.end() + "\n";
+
+          var bucketname = $('#bucketname').val(); //服务名
+          var username = $('#username').val(); //操作员账号
+          var password = $('#password').val(); //操作员密码
+          var save_key = $('#save_key').val(); //操作员密码
+
+          //var save_key = "/{filename}{.suffix}";
+          var url = "https://v0.api.upyun.com/" + bucketname;
+          var length = file.size;
+          var policy = btoa(JSON.stringify({
+            "bucket": bucketname,
+            "save-key": save_key,
+            "content-length": length,
+            "content-md5": md5,
+            "expiration": parseInt(Date.parse(new Date()) + 3600)
+          }));
+          var signature = "UPYUN " + username + ":" + b64hamcsha1(HexMD5.MD5(password).toString(HexMD5.enc.Hex),
+            "POST&/" + bucketname + "&" + policy + "&" + md5);
+          fileinfo.innerHTML = "文件名称: " + file.name + "<br/>" + "文件大小: " + file.size + "<br/>" + "文件类型: " + file
+              .type + "<br/><br/>" +
+            "<div id='progress' style='width:300px;height:14px;border:1px solid #ddd;padding-top:0px;border-radius:4px;display:none'><div id='bar' style='float:left;background-color:#62BFFF; width:0%; height:14px; border-radius:3px;'></div><div id='percent' style='float:left;width:0px;display:inline-block; top:0px;font-size:10px;'></div>";
+          var xhrOnProgress = function(fun) {
+            xhrOnProgress.onprogress = fun;
+            return function() {
+              var xhr = $.ajaxSettings.xhr();
+              if (typeof xhrOnProgress.onprogress !== 'function') {
+                return xhr;
+              }
+              if (xhrOnProgress.onprogress && xhr.upload) {
+                xhr.upload.onprogress = xhrOnProgress.onprogress;
+              }
+              return xhr;
+            }
+          }
+          var formData = new FormData();
+          formData.append("policy", policy);
+          formData.append("authorization", signature);
+          formData.append("file", file);
+          $.ajax({
+            url: url,
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            headers: {
+              "content-md5": md5
+            },
+            xhr: xhrOnProgress(function(e) {
+              var percent = Math.round(e.loaded * 100 / e.total);
+              $("#progress").show();
+              $("#percent").text(percent + "%");
+              $("#bar").width(percent + '%');
+            }),
+            success: function(data, textStatus, xhr) {
+              $("#progress").hide();
+              fileinfo.innerHTML += "上传成功!<br/><br/>";
+              for (var key in JSON.parse(data)) {
+                fileinfo.innerHTML += key + ": " + JSON.parse(data)[key] + "<br/>";
+              }
+
+            },
+            error: function(xhr) {
+              $("#progress").hide();
+              fileinfo.innerHTML += "上传失败!<br/><br/>";
+              for (var key in JSON.parse(xhr.responseText)) {
+                fileinfo.innerHTML += key + ": " + JSON.parse(xhr.responseText)[key] + "<br/>";
+              }
+            }
+          });
+
+
+        }
+
+      },
+      frOnerror = function() {
+        fileinfo.innerHTML += "\n出错了.";
+      };
+
+    function loadNext() {
+      var fileReader = new FileReader();
+      fileReader.onload = frOnload;
+      fileReader.onerror = frOnerror;
+      var start = currentChunk * chunkSize,
+        end = ((start + chunkSize) >= file.size) ? file.size : start + chunkSize;
+      fileReader.readAsArrayBuffer(blobSlice.call(file, start, end));
+    };
+    fileinfo.style.display = "inline-block";
+    fileinfo.innerHTML = "选择文件: " + file.name + " (" + file.size.toString().replace(/\B(?=(?:\d{3})+(?!\d))/g,
+      ',') + " bytes)\n";
+    loadNext();
+
+  }
+</script>
+
+</body></html>

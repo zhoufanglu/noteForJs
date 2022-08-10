@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .img-gradient {
+            max-width: 100%;
+            width: 800px;
+            margin: auto;
+        }
+
+
+        .img-gradient::after {
+            display: block;
+            position: relative;
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, #fff 100%);
+            margin-top: -150px;
+            height: 150px;
+            width: 100%;
+            content: '';
+        }
+    </style>
+</head>
+<body>
+<div class="css">
+    <h2>Before</h2>
+    <img src="https://www.mybluelinux.com/img/post/posts/0130/pytest_database_testing.webp"/>
+
+    <h2>After</h2>
+    <div class="img-gradient">
+        <img src="https://www.mybluelinux.com/img/post/posts/0130/pytest_database_testing.webp"/>
+    </div>
+</div>
+</body>
+</html>

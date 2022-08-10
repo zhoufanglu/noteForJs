@@ -9,7 +9,7 @@
   // pending 准备阶段
   // fulfilled 成功状态
   // rejected 拒绝状态
-  let p = new Promise((resolve, reject) => {
+  /*let p = new Promise((resolve, reject) => {
     resolve(1)
   })
   //pThen实际上也是个Promise
@@ -30,9 +30,26 @@
 
   setTimeout(() => {
     console.log(pThen)
-  })
+  })*/
 
-
+  let arr1 = [{ id: 1, name: '张三', }, { id: 2, name: '李四' }]
+  let arr2 = [
+    { name: "张三", age: 18 },
+    { name: "王五", age: 20 },
+  ]
+  //arr3 = [{ id: 1, name: "张三" ,age:18}]
+  const arr3 = arr1.reduce((prev, item_1)=>{
+    const findObj = arr2.find(item_2=>item_2.name === item_1.name)
+    if(findObj){
+      const curObj = {
+        ...item_1,
+        ...findObj
+      }
+      prev.push(curObj)
+    }
+    return prev
+  }, [])
+  console.log(52, arr3)
 </script>
 </body>
 </html>

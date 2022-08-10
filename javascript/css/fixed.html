@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .outer-container {
+        margin: 0 auto;
+        display: block;
+        max-width: 100%;
+        /*z-index: 999;*/
+    }
+
+    .header {
+        height: 50px;
+        background-color: red;
+        display: flex;
+        width: 100%;
+        position: fixed;
+        top: 0;
+    }
+
+    .content {
+        background-color: yellow;
+        border: 2px black solid;
+        display: block;
+        height: 500px;
+    }
+</style>
+<body>
+<div class="outer-container">
+    <div class="header">I am the header</div>
+</div>
+<div style="height: 50px"></div>
+<div class="content-out">
+    <img height="100px" width="100px" src="http://fx-contributors.test.upcdn.net/c2e75e3b/credentials/48335af76735138b.webp" alt="">
+    <div class="content">I am the content1</div>
+    <div class="content">I am the content2</div>
+</div>
+<div class="footer">I am the footer</div>
+</body>
+</html>
