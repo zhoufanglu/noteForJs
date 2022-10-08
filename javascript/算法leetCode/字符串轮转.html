@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  /*
+  *
+  * https://leetcode.cn/problems/string-rotation-lcci/submissions/
+  * 字符串轮转。给定两个字符串s1和s2，请编写代码检查s2是否为s1旋转而成（比如，waterbottle是erbottlewat旋转后的字符串）。
+
+示例1:
+
+输入：s1 = "waterbottle", s2 = "erbottlewat"
+输出：True
+示例2:
+
+输入：s1 = "aa", s2 = "aba"
+输出：False
+提示：
+
+字符串长度在[0, 100000]范围内。
+说明:
+
+你能只调用一次检查子串的方法吗？
+
+  **/
+  /**
+   * @param {string} s1
+   * @param {string} s2
+   * @return {boolean}
+   */
+  //12345 45123
+  const isFlipedString = function (s1, s2) {
+    if (s1.length !== s2.length) {
+      return false
+    }
+    if(s1 === s2) {
+      return true
+    }
+    const indexName = s1[0]
+    const startIndex = s2.indexOf(indexName)
+    if(startIndex === -1){
+      return false
+    }
+    const endIndex = s2.length
+    let newStr = ''
+    for(let i=startIndex; i<endIndex; i++){
+      newStr +=  s2[i]
+    }
+    for(let i=0; i<startIndex; i++){
+      newStr += s2[i]
+    }
+    return newStr === s1
+  };
+
+  isFlipedString("PvcvpkpHwaXQxpgGzURBvHRMvCsCPPmlKBSzXDWSvrxLBPdAvRpgcIwNOVQDdwPIElrAFqmb", "SvrxLBPdAvRpgcIwNOVQDdwPIElrAFqmbPvcvpkpHwaXQxpgGzURBvHRMvCsCPPmlKBSzXDW")
+
+</script>
+</body>
+</html>
