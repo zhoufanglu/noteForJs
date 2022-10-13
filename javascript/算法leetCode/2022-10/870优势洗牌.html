@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  /**
+   * 田忌赛马
+   * 示例 1：
+   *
+   * 输入：nums1 = [2,7,11,15], nums2 = [1,10,4,11]
+   * 输出：[2,11,7,15]
+   * 示例 2：
+   *
+   * 输入：nums1 = [12,24,8,32], nums2 = [13,25,32,11]
+   * 输出：[24,32,8,12]
+   *
+   * 来源：力扣（LeetCode）
+   * 链接：https://leetcode.cn/problems/advantage-shuffle
+   * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+   */
+  /**
+   * @param {number[]} nums1
+   * @param {number[]} nums2
+   * @return {number[]}
+   */
+  var advantageCount = function(nums1, nums2) {
+    let returnArr = []
+    nums2.forEach(num2=>{
+      const largeArr = nums1.filter(num1=>num1>num2)
+      let minValue = -1
+      //console.log(34, largeArr)
+      if(largeArr.length>0){
+        minValue = Math.min(...largeArr)
+      }else{
+        minValue = Math.min(...nums1)
+      }
+      nums1.splice(nums1.indexOf(minValue), 1)
+      returnArr.push(minValue)
+      //console.log(40, minValue)
+    })
+    //console.log(42, returnArr)
+    return  returnArr
+  };
+  let nums1 = [12,24,8,32], nums2 = [13,25,32,11]
+  advantageCount(nums1, nums2)
+</script>
+</body>
+</html>
