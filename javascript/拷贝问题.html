@@ -20,7 +20,7 @@
     console.log(arr_1)
     console.log(arr_2)*/
     /**********************深拷贝***********************/
-    let arr_1 = [
+    /*let arr_1 = [
       {
         id:1, name: 'a',
         children:
@@ -58,7 +58,38 @@
       } else {
         return target;
       }
-    };
+    };*/
+    /*const obj = {
+      name: 'father',
+      age: 18,
+      children: {
+        name: 'child',
+        age: 2
+      }
+    }*/
+    const obj = [
+      1,
+      2,
+      {name: 'a'}
+    ]
+    function deepCopy(obj) {
+      const cloneObj = obj.constructor()
+      // 如果是对象
+      if(obj instanceof Object){
+        for(let key in obj){
+          if(obj[key] instanceof Object){
+            cloneObj[key] = deepCopy(obj[key])
+          }else{
+            cloneObj[key] = obj[key]
+          }
+        }
+      }
+      return cloneObj
+    }
+    let obj2 = deepCopy(obj)
+    console.log('----------')
+    obj2[2].name = 'xxx'
+    console.log(obj, obj2)
 </script>
 </body>
 </html>
