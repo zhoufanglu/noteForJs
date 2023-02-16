@@ -6,90 +6,32 @@
 </head>
 <body>
 <script>
-    /**********************浅拷贝***********************/
-    /*let obj_1 = {id: 1, name: 'a'}
-    let obj_2 = Object.assign({}, obj_1)
-    obj_2.name = 'b'
-    console.log(obj_1)
-    console.log(obj_2)
-    console.log('---------')*/
-    /**********************浅拷贝数组***********************/
-    /*let arr_1 = [{id:1, name: 'a', children:[{id:1-1, name:'a-1'}]}], arr_2 = []
-    arr_2 = Object.assign([], arr_1)
-    arr_2[0].children.name = '666'
-    console.log(arr_1)
-    console.log(arr_2)*/
-    /**********************深拷贝***********************/
-    /*let arr_1 = [
-      {
-        id:1, name: 'a',
-        children:
-          [
-            {id:1-1, name:'a-1'},
-            {id:1-1, name:'a-2'}
-          ]
-      }]
-    const arr_2 = deepCopy(arr_1)
-    //const arr_2 = clone(arr_1)
-    function deepCopy(obj){
-      //假如是数组
-      if(typeof obj === 'object'){
-        let newObj = obj.constructor()
-        //判断如果有属性进行赋值
-        for(let key in obj){
-          newObj[key] = deepCopy(obj[key])
-        }
-        return newObj
-      }else {
-        return obj
-      }
-    }
-    arr_2[0].children[0].name = '6666'
-    console.log(44, arr_1)
-    console.log(44, arr_2)
-
-    function clone(target) {
-      if (typeof target === 'object') {
-        let cloneTarget = Array.isArray(target) ? [] : {};
-        for (const key in target) {
-          cloneTarget[key] = clone(target[key]);
-        }
-        return cloneTarget;
-      } else {
-        return target;
-      }
-    };*/
-    /*const obj = {
-      name: 'father',
-      age: 18,
+    let obj = {
+      name: 'a',
+      age: 1,
       children: {
-        name: 'child',
-        age: 2
+        name: 'a-1',
+        age: '1-1',
+        list: [1,2,3,4]
       }
-    }*/
-    const obj = [
-      1,
-      2,
-      {name: 'a'}
-    ]
-    function deepCopy(obj) {
-      const cloneObj = obj.constructor()
-      // 如果是对象
-      if(obj instanceof Object){
-        for(let key in obj){
-          if(obj[key] instanceof Object){
-            cloneObj[key] = deepCopy(obj[key])
-          }else{
-            cloneObj[key] = obj[key]
-          }
+    }
+    obj = [1, [[2],[3]], [[4,[5]]]]
+    function deep_clone(obj){
+      const cloned_obj = obj.constructor()
+      for(let key in obj){
+        if(typeof obj[key] === 'object' ){
+          cloned_obj[key] = deep_clone(obj[key])
+        }else {
+          cloned_obj[key] = obj[key]
         }
       }
-      return cloneObj
+      return cloned_obj
     }
-    let obj2 = deepCopy(obj)
-    console.log('----------')
-    obj2[2].name = 'xxx'
-    console.log(obj, obj2)
+    const obj_2 = deep_clone(obj)
+    obj[1][0] = 3333
+    console.log(obj)
+    console.log(obj_2)
+
 </script>
 </body>
 </html>
