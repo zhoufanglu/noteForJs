@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Person {
+      constructor(name) {
+        this.name = name
+      }
+      drink() {
+        console.log('喝水')
+      }
+    }
+    class Student extends Person{
+      constructor(name, score) {
+        super(name)
+        this.score = score
+      }
+      doWork() {
+        console.log(`我叫${this.name}, 考了${this.score}, 我喜欢写作业`)
+      }
+    }
+    const student = new Student('lfz', '100')
+    console.log(student)
+    student.doWork()
+    console.log('-----')
+
+    class Teacher extends Person{
+      constructor(name) {
+        super(name)
+      }
+      teach() {
+        console.log(`我是老师，我喜欢教${this.name}学生`)
+      }
+    }
+    const teacher = new Teacher('lfz')
+    console.log(teacher)
+    teacher.teach()
+    teacher.drink()
+    console.log('-----')
+    // 继承方法1, 构造函数.protoType = 对象
+    function SuperList () {
+      this.list = ['a','b', 'c']
+    }
+
+    function List() {
+      // this.prototype= new SuperList()
+      this.list.push('d')
+      // this 指向new出来的这个实例list
+    }
+    List.prototype = new SuperList()
+    const list = new List()
+    console.log(55, list)
+    // 继承方法2
+    /*function Animal() {
+      this.type = '动物'
+      Animal.call(this)
+    }
+    function Dog() {
+      this.name = '狗'
+    }
+    Dog.prototype.__proto__ = Animal.prototype
+    const dog = new Dog()
+    console.log(66, dog)*/
+    function Animal() {
+        this.name = '动物'
+        this.speak = function (){
+          console.log(`我是${this.name}`)
+        }
+    }
+    const animal = new Animal()
+    animal.speak()
+    console.log(76, Animal) //
+    console.log(77, animal) // animal.protoType
+    console.log(animal.__proto__)
+    console.log(Animal.prototype)
+    function Dog() {
+      this.age = 18
+      Animal.call(this)
+    }
+    Dog.prototype.__proto__ = Animal.prototype
+    const dog = new Dog()
+    console.log(86, dog)
+
+</script>
+</body>
+</html>
