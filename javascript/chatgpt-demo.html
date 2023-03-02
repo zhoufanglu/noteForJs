@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <style>
+        .app{
+            padding: 20px 20%;
+        }
+    </style>
+</head>
+<div class="app" id="app">
+    <div v-if="visible">
+        <div class="input-group mb-3">
+            <!--提问-->
+            <input v-model="question" type="text" class="form-control" placeholder="Please enter text" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <button @click="sendQus" class="btn btn-outline-secondary" type="button" id="button-addon2">提问</button>
+            </div>
+        </div>
+        <!--结果列表-->
+        <ul class="list-group" v-if="resultList">
+            <temlate v-for="(res, index) in resultList" :key="index">
+                <li class="list-group-item" style="font-weight: bolder; font-size: 20px;">{{res.question}}</li>
+                <li class="list-group-item" style="margin-bottom: 20px; padding-left: 40px">{{res.result}}</li>
+            </temlate>
+        </ul>
+        <div class="spinner-border text-primary" role="status" v-show="loading">
+        </div>
+    </div>
+</div>
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+<!-- 用于弹窗、提示、下拉菜单 -->
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+<!-- Bootstrap 4核心JavaScript 文件 -->
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14"></script>
+<body>
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      visible: true,
+      question: "",
+      loading: false,
+      resultList: []
+    },
+    methods: {
+      sendQus() {
+        if(!this.question){
+            return false
+        }
+        this.loading=true
+        const url = 'https://1270001.xyz/openAi/chat?msg=%E4%B8%AD%E5%9B%BD%E6%9C%80%E5%A4%A7%E6%B8%B8%E6%88%8F%E5%85%AC%E5%8F%B8%E6%98%AF%E4%BB%80%E4%B9%88&user=d5d4aaa5'
+        $.get(url, function(result){
+          console.log(57, result)
+          // TODO:
+          console.log(this.question)
+          this.loading=false
+          this.resultList.push({
+            question: this.question,
+            result: 'sss'
+          })
+        })
+      }
+    }
+  });
+</script>
+</body>
+</html>
