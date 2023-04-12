@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let obj = {
+      name: 'a',
+      value: 1,
+      children: {
+        name: 'a-1',
+        value: 1
+      }
+    }
+    console.log(17, initData(obj))
+    function initData(obj) {
+      const data = {}
+      for(let key in obj){
+        if(key === 'value'){
+          obj[key] = ++obj[key]
+        }
+        data[key] = obj[key]
+        if(key === 'children'){
+            initData(obj[key])
+        }
+      }
+      return obj
+    }
+</script>
+</body>
+</html>
