@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  const data = { text: 'hello-world' }
+  const bucket = new WeakMap()
+  const obj = new Proxy(data, {
+    get(target, key, receiver) {
+      console.log('------get-----', target)
+      if (activeEffect) {
+        let depsMap = bucket.get(target)
+        if(!depsMap){
+          bucket.set(target, (depsMap = new Map()))
+        }
+      }else {
+        return target[key]
+      }
+    },
+    set(target, key, value) {
+      target[key] = value
+      console.log('------set-----', target)
+      console.log(bucket)
+      bucket.forEach(fn => fn())
+      return true
+    },
+  })
+  /**********************副作用函数注册***********************/
+  let activeEffect = null
+
+  function effect(fn) {
+    activeEffect = fn
+    fn()
+  }
+  effect(() => {
+        document.body.innerText = obj.text
+      }
+    )
+  setTimeout(() => {
+    /*effect(() => {
+        document.body.innerText = obj.text
+      }
+    )*/
+    obj.text = '设置了text'
+  }, 1000)
+
+  setTimeout(() => {
+    /*effect(() => {
+        document.body.innerText = obj.text
+      }
+    )*/
+    obj.color = 'red'
+  }, 2000)
+
+</script>
+</body>
+</html>
