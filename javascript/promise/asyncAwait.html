@@ -41,17 +41,17 @@
   }
   console.log(37, foo().next().value().then(res=>{console.log(res)}))
 */
-  
-  async function async1() {
+
+ /* async function async1() {
     await async2()
     console.log('async1 end')
   }
   async function async2() {
     console.log('async2 end')
     return console.log('return async2')
-/*    return Promise.resolve().then(()=>{
+/!*    return Promise.resolve().then(()=>{
       console.log('async2 end1')
-    })*/
+    })*!/
   }
 
   async1()
@@ -69,8 +69,7 @@
     })
     .then(function() {
       console.log('promise2')
-    })
-
+    })*/
 
 
 </script>
