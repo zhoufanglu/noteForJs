@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<noscript>
+    <strong>Please enable JavaScript to continue.</strong>
+</noscript>
+<div id="app" style="font-size: 30px">
+    aadsadsads
+    <button onclick="handleClick()" style="font-size: 30px;">send</button>
+</div>
+<!-- built files will be auto injected -->
+</body>
+<!-- uni 的 SDK -->
+<!-- 需要把 uni.webview.1.5.4.js 下载到自己的服务器 -->
+<script type="text/javascript" src="./uni.webview.1.5.4.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+
+<script>
+
+  function handleClick(){
+    console.log(24, wx)
+    wx.miniProgram.postMessage({ data: 'fk' });
+    wx.miniProgram.navigateBack({ delta: 1 })
+  }
+  document.addEventListener('UniAppJSBridgeReady', function() {
+    /*uni.webView.getEnv(function(res) {
+      console.log('env:' + JSON.stringify(res));
+    });
+    uni.postMessage({ data: 'cccccxxxxkkkkk' })*/
+    // uni.postMessage({ data: 'cccccxxxxkkkkk' })
+    wx.miniProgram.postMessage({ data: 'kkkkkk' });
+    window.parent.postMessage('Hello from 内部网页! 我是vue3-自定义', '*')
+
+    // wx.miniProgram.navigateBack({ delta: 1 })
+
+
+    // uni.webView.navigateTo(...)
+  });
+</script>
+</html>

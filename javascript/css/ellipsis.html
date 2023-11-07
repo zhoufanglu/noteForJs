@@ -13,10 +13,18 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+        /* 避免下划线字符断开，保留空白字符 */
+        .white-space {
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
     </style>
 </head>
 <body>
 <h2>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.</h2>
-
+<p class="white-space">
+____Lorem_ipsum_dolor_sit_amet,_consetetur_sadipscing_elitr,_sed_diam_nonumy_eirmod_tempor_invidunt_ut_labore_et.
+</p>
+<p class="white-space">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.</p>
 </body>
 </html>
