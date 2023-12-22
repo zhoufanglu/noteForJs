@@ -66,11 +66,9 @@
 <ul id="nav">
     <li class="slide1"></li>
     <li class="slide2"></li>
-    <li><a href="#">Alpha</a></li>
-    <li><a href="#">Beta</a></li>
-    <li><a href="#">Gamma</a></li>
-    <li><a href="#">Delta</a></li>
-    <li><a href="#">Epsilon</a></li>
+    <li><a  href="#" class="squeeze">Alpha</a></li>
+    <li><a href="#" class="squeeze">Beta</a></li>
+    <li><a href="#" class="squeeze">Beta</a></li>
 </ul>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -83,10 +81,10 @@
   $("#nav a").on("mouseover", function () {
     var position = $(this).parent().position();
     var width = $(this).parent().width();
-    $("#nav .slide2").css({ opacity: 1, left: +position.left, width: width }).addClass("squeeze");
+    $("#nav .slide2").css({ opacity: 1, left: +position.left, width: width })
   });
   $("#nav a").on("mouseout", function () {
-    $("#nav .slide2").css({ opacity: 0 }).removeClass("squeeze");
+    $("#nav .slide2").css({ opacity: 0 })
   });
   var currentWidth = $("#nav li:nth-of-type(3) a").parent("li").width();
   var current = $("li:nth-of-type(3) a").position();
