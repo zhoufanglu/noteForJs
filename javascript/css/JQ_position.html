@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery源码解析之position()</title>
+    <style>
+        p{
+            border: solid 1px red;
+            padding: 20px;
+        }
+    </style>
+</head>
+<div>
+    <p id="pTwo">这是divTwo</p>
+</div>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+  // $("#pTwo").css('display','none')
+  // $("#pTwo").position()
+  let p=document.querySelector("#pTwo")
+  p.style.borderLeftWidth='8px'
+  console.log(p.getBoundingClientRect(),'pTwo11'); //x:8,y:16
+  console.log($("#pTwo").position())
+
+
+</script>
+</body>
+</html>
