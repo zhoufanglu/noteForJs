@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        div {
+        .animate-line {
             background: none;
             border: 0;
             box-sizing: border-box;
@@ -21,7 +21,7 @@
             height:50px;
             line-height: 20px;
         }
-        div::before, div::after {
+        .animate-line::before, .animate-line::after {
             box-sizing: inherit;
             content: '';
             position: absolute;
@@ -29,10 +29,10 @@
             height: 100%;
         }
 
-        div {
+        .animate-line {
             transition: color 0.25s;
         }
-        div::before, div::after {
+        .animate-line::before, .animate-line::after {
             border: 2px solid transparent;
             width: 0;
             height: 0;
@@ -85,13 +85,13 @@
     </style>
 </head>
 <body>
-    <div class='draw'>
-        draw
+    <div class='draw animate-line'>
+        draw test
     </div>
-    <div class='draw meet'>
+    <div class='draw meet animate-line'>
         meet
     </div>
-    <div class='center'>
+    <div class='center animate-line'>
         center
     </div>
 </body>
